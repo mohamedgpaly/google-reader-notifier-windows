@@ -127,10 +127,6 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "favicon.ico"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
                     RelPath = "frmMain.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
@@ -194,6 +190,10 @@
                     RelPath = "TaskbarNotifier.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "unread.ico"
+                    BuildAction = "EmbeddedResource"
                 />
                 <File
                     RelPath = "XmlINI.cs"

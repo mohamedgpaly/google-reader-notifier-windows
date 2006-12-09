@@ -121,6 +121,11 @@ namespace GoogleReader
 			this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
 			this.notifyIcon1.Text = "Google Reader Notifier";
 			this.notifyIcon1.Visible = true;
+			this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
+			// 
+			// contextMenu1
+			// 
+			this.contextMenu1.Popup += new System.EventHandler(this.contextMenu1_Popup);
 			// 
 			// thetimer
 			// 
@@ -223,16 +228,24 @@ namespace GoogleReader
 							taskbarNotifier1.Show("",result,300,5000,500); //Int32.Parse(textBoxDelayShowing.Text),Int32.Parse(textBoxDelayStaying.Text),Int32.Parse(textBoxDelayHiding.Text));
 						}
 					}
+					notifyIcon1.Icon = new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GoogleReader.unread.ico"));
 					CurrentUnreadCount = _api.totalcount;
 				}
 				else
 				{
 					CurrentUnreadCount = 0;
+					ResetTrayIcon();
 					notifyIcon1.Text = "Google Reader Notifier";
 				}
 			}
 			catch{}
 
+		}
+
+		private void ResetTrayIcon()
+		{
+			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(frmMain));
+			this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
 		}
 
 		private void thetimer_Tick(object sender, System.EventArgs e)
@@ -247,11 +260,13 @@ namespace GoogleReader
 		private void taskbarNotifier1_CloseClick(object sender, EventArgs e)
 		{
 			// do nothing
+			//ResetTrayIcon();
 		}
 
 		private void taskbarNotifier1_ContentClick(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start("http://www.google.com/reader/view/");
+			ResetTrayIcon();
 		}
 
 		#endregion
@@ -276,6 +291,7 @@ namespace GoogleReader
 		private void mnuGoToReader(object sender, System.EventArgs e)
 		{
 			System.Diagnostics.Process.Start("http://www.google.com/reader/view/");
+			ResetTrayIcon();
 		}
 	
 		/// <summary>
@@ -315,6 +331,16 @@ namespace GoogleReader
 			this.Hide();
 		}
 		#endregion
+
+		private void notifyIcon1_Click(object sender, System.EventArgs e)
+		{
+			ResetTrayIcon();
+		}
+
+		private void contextMenu1_Popup(object sender, System.EventArgs e)
+		{
+			ResetTrayIcon();
+		}
 
 	}
 }
