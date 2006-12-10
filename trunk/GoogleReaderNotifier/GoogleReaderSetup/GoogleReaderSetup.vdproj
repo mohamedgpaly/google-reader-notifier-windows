@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_C0DD74CF7F0542629B67776ED2D34207"
+        "MsmKey" = "8:_7A4E28B6FCE348FBACAEE08D93F33A11"
         "OwnerKey" = "8:_F367B5E9E1D446119568013654742990"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -193,13 +193,13 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Google Reader Notifier"
-        "ProductCode" = "8:{749A53D1-D48A-44BB-B9E7-EC8B934402EA}"
-        "PackageCode" = "8:{392EDBDC-B2F2-4F34-B1DE-448819321ECA}"
+        "ProductCode" = "8:{C30CB4C7-9879-4C78-BBFE-A4717CCD8388}"
+        "PackageCode" = "8:{818224D7-E063-4952-AAD3-1F91CD7A5877}"
         "UpgradeCode" = "8:{CAEB70FD-C720-4D52-993A-0F8D01A3A811}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.0.2"
         "Manufacturer" = "8:BrainDotty"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.braindotty.com"
@@ -719,7 +719,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_C0DD74CF7F0542629B67776ED2D34207"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_7A4E28B6FCE348FBACAEE08D93F33A11"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
