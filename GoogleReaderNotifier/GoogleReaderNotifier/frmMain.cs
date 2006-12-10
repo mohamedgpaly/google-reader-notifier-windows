@@ -121,6 +121,7 @@ namespace GoogleReader
 			this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
 			this.notifyIcon1.Text = "Google Reader Notifier";
 			this.notifyIcon1.Visible = true;
+			this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
 			this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
 			// 
 			// contextMenu1
@@ -340,6 +341,12 @@ namespace GoogleReader
 		private void contextMenu1_Popup(object sender, System.EventArgs e)
 		{
 			ResetTrayIcon();
+		}
+
+		private void notifyIcon1_DoubleClick(object sender, System.EventArgs e)
+		{
+			System.Diagnostics.Process.Start("http://www.google.com/reader/view/");
+			ResetTrayIcon();		
 		}
 
 	}
