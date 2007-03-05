@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_7A4E28B6FCE348FBACAEE08D93F33A11"
+        "MsmKey" = "8:_9592AD9841904249BB3504E2F1C50EEF"
         "OwnerKey" = "8:_F367B5E9E1D446119568013654742990"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -122,17 +122,6 @@
         }
         "Folder"
         {
-            "{78BAF5CE-F2E5-45BE-83BC-DB6AF387E941}:_1AFFE2CB16244023A0114B05CAE5DBEE"
-            {
-            "Name" = "8:#1928"
-            "AlwaysCreate" = "11:FALSE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Property" = "8:StartupFolder"
-                "Folders"
-                {
-                }
-            }
             "{58C0ADA3-3CEA-43BD-A3B3-2EA121BC8217}:_2231FF2A900B4FD5B83AE8E37915E407"
             {
             "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
@@ -193,13 +182,13 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Google Reader Notifier"
-        "ProductCode" = "8:{C30CB4C7-9879-4C78-BBFE-A4717CCD8388}"
-        "PackageCode" = "8:{818224D7-E063-4952-AAD3-1F91CD7A5877}"
+        "ProductCode" = "8:{27CF46A8-CBB7-4168-B238-B141D8741CCB}"
+        "PackageCode" = "8:{8F68BD58-B8B2-4EF9-9E61-CCF8E8D2DD02}"
         "UpgradeCode" = "8:{CAEB70FD-C720-4D52-993A-0F8D01A3A811}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "ProductVersion" = "8:1.0.2"
+        "ProductVersion" = "8:1.0.5"
         "Manufacturer" = "8:BrainDotty"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.braindotty.com"
@@ -318,20 +307,6 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_F367B5E9E1D446119568013654742990"
             "Folder" = "8:_CA7C12597FCB40F197398684DF8D81CA"
-            "WorkingFolder" = "8:_2231FF2A900B4FD5B83AE8E37915E407"
-            "Icon" = "8:_F367B5E9E1D446119568013654742990"
-            "Feature" = "8:"
-            }
-            "{478F747B-8505-45D1-9AAE-8C3B645C26E3}:_A59042133B3743B5BA99869486636A25"
-            {
-            "Name" = "8:Google Reader Notifier"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:32512"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_F367B5E9E1D446119568013654742990"
-            "Folder" = "8:_1AFFE2CB16244023A0114B05CAE5DBEE"
             "WorkingFolder" = "8:_2231FF2A900B4FD5B83AE8E37915E407"
             "Icon" = "8:_F367B5E9E1D446119568013654742990"
             "Feature" = "8:"
@@ -719,7 +694,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_7A4E28B6FCE348FBACAEE08D93F33A11"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_9592AD9841904249BB3504E2F1C50EEF"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -766,7 +741,7 @@
             }
             "{8062640A-2EEE-46E9-AB67-688E9A886E9F}:_F367B5E9E1D446119568013654742990"
             {
-            "SourcePath" = "8:..\\GoogleReaderNotifier\\obj\\Release\\GoogleReader.exe"
+            "SourcePath" = "8:..\\GoogleReaderNotifier\\obj\\Debug\\GoogleReader.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2231FF2A900B4FD5B83AE8E37915E407"

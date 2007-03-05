@@ -42,6 +42,7 @@ namespace GoogleReader
 				private XmlINI _store;
 		#endregion
 		private System.Windows.Forms.LinkLabel linkHelp;
+		private System.Windows.Forms.CheckBox chkStartWithWindows;
 
 
 		#region Startup
@@ -112,6 +113,7 @@ namespace GoogleReader
 			this.label8 = new System.Windows.Forms.Label();
 			this.cmdOK = new System.Windows.Forms.Button();
 			this.linkHelp = new System.Windows.Forms.LinkLabel();
+			this.chkStartWithWindows = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -207,11 +209,12 @@ namespace GoogleReader
 			// groupBox1
 			// 
 			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+			this.groupBox1.Controls.Add(this.chkStartWithWindows);
 			this.groupBox1.Controls.Add(this.chkDoNotAnimate);
 			this.groupBox1.Controls.Add(this.chkShowCountTooltip);
 			this.groupBox1.Location = new System.Drawing.Point(16, 96);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(424, 72);
+			this.groupBox1.Size = new System.Drawing.Size(424, 96);
 			this.groupBox1.TabIndex = 9;
 			this.groupBox1.TabStop = false;
 			// 
@@ -254,7 +257,7 @@ namespace GoogleReader
 			this.groupBox2.Controls.Add(this.txtUsername);
 			this.groupBox2.Controls.Add(this.label7);
 			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Location = new System.Drawing.Point(16, 184);
+			this.groupBox2.Location = new System.Drawing.Point(16, 208);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(424, 88);
 			this.groupBox2.TabIndex = 10;
@@ -297,7 +300,7 @@ namespace GoogleReader
 			// cmdCancel
 			// 
 			this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cmdCancel.Location = new System.Drawing.Point(376, 312);
+			this.cmdCancel.Location = new System.Drawing.Point(376, 344);
 			this.cmdCancel.Name = "cmdCancel";
 			this.cmdCancel.Size = new System.Drawing.Size(72, 24);
 			this.cmdCancel.TabIndex = 4;
@@ -307,9 +310,9 @@ namespace GoogleReader
 			// label8
 			// 
 			this.label8.BackColor = System.Drawing.Color.Transparent;
-			this.label8.Location = new System.Drawing.Point(8, 280);
+			this.label8.Location = new System.Drawing.Point(16, 312);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(288, 64);
+			this.label8.Size = new System.Drawing.Size(272, 64);
 			this.label8.TabIndex = 11;
 			this.label8.Text = "Google Reader Notifier is a private open source project utilizing the unofficial " +
 				"Google Reader API, and is in no way related to the fine people at Google Corp.";
@@ -317,7 +320,7 @@ namespace GoogleReader
 			// cmdOK
 			// 
 			this.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.cmdOK.Location = new System.Drawing.Point(296, 312);
+			this.cmdOK.Location = new System.Drawing.Point(296, 344);
 			this.cmdOK.Name = "cmdOK";
 			this.cmdOK.Size = new System.Drawing.Size(72, 24);
 			this.cmdOK.TabIndex = 12;
@@ -338,12 +341,20 @@ namespace GoogleReader
 			this.linkHelp.VisitedLinkColor = System.Drawing.Color.Black;
 			this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
 			// 
+			// chkStartWithWindows
+			// 
+			this.chkStartWithWindows.Location = new System.Drawing.Point(16, 64);
+			this.chkStartWithWindows.Name = "chkStartWithWindows";
+			this.chkStartWithWindows.Size = new System.Drawing.Size(248, 24);
+			this.chkStartWithWindows.TabIndex = 2;
+			this.chkStartWithWindows.Text = "start notifier when Windows starts";
+			// 
 			// optionsForm
 			// 
 			this.AcceptButton = this.cmdOK;
 			this.BackColor = System.Drawing.SystemColors.Control;
 			this.CancelButton = this.cmdCancel;
-			this.ClientSize = new System.Drawing.Size(458, 344);
+			this.ClientSize = new System.Drawing.Size(458, 384);
 			this.Controls.Add(this.linkHelp);
 			this.Controls.Add(this.cmdOK);
 			this.Controls.Add(this.label8);
@@ -383,6 +394,7 @@ namespace GoogleReader
 			txtFilterLabels.Text = _store.GetKey("LabelFilter","");
 			chkShowCountTooltip.Checked = Convert.ToBoolean(_store.GetKey("ShowCountTooltip","True"));
 			chkDoNotAnimate.Checked = Convert.ToBoolean(_store.GetKey("DoNotAnimate","False"));
+			chkStartWithWindows.Checked = StartupHelper.AppStartsWithWindows();
 			txtUsername.Text = _store.GetKey("Username","");
 			txtPassword.Text = Encryption.Decrypt(_store.GetKey("Password",""));
 		}
@@ -400,6 +412,8 @@ namespace GoogleReader
 			_store.SaveKey("DoNotAnimate",chkDoNotAnimate.Checked.ToString());
 			_store.SaveKey("Username",txtUsername.Text);
 			_store.SaveKey("Password",Encryption.Encrypt(txtPassword.Text)); // need to encrypt this
+
+			StartupHelper.StartWithWindows(chkStartWithWindows.Checked);
 
 			this.DialogResult = DialogResult.OK;
 			this.Hide();

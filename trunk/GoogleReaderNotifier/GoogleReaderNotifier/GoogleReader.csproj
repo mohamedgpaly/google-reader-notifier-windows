@@ -187,6 +187,11 @@
                     BuildAction = "EmbeddedResource"
                 />
                 <File
+                    RelPath = "StartupHelper.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "TaskbarNotifier.cs"
                     SubType = "Form"
                     BuildAction = "Compile"

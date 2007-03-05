@@ -163,7 +163,9 @@ namespace GoogleReader
 		/// </summary>
 		private void addDefaultItemsToMenu()
 		{
-			contextMenu1.MenuItems.Add("Go to Reader",new EventHandler(this.mnuGoToReader));
+			MenuItem item = new MenuItem("Go to Reader", new EventHandler(this.mnuGoToReader));
+			item.DefaultItem = true;
+			contextMenu1.MenuItems.Add(item);
 			contextMenu1.MenuItems.Add("Check Now",new EventHandler(this.mnuCheckNow));
 			contextMenu1.MenuItems.Add("-");
 			contextMenu1.MenuItems.Add("Preferences...",new EventHandler(this.mnuPreferences));
@@ -328,6 +330,7 @@ namespace GoogleReader
 			if(frm.ShowDialog() == DialogResult.OK)
 			{
 				LoadSettings();
+				CheckForUpdates();
 			}
 			this.Hide();
 		}
