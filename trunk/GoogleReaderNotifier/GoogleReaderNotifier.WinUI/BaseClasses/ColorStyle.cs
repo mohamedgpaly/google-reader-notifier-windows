@@ -1,6 +1,6 @@
 using System;
 
-namespace GoogleReader
+namespace GoogleReaderNotifier.WinUI.BaseClasses
 {
 	/// <summary>
 	/// Summary description for ColorStyle.

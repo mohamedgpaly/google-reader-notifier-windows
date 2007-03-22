@@ -3,13 +3,13 @@
         ProjectType = "Local"
         ProductVersion = "7.10.3077"
         SchemaVersion = "2.0"
-        ProjectGuid = "{4BF6FE04-EBD6-423A-A31E-A4445950D833}"
+        ProjectGuid = "{2DB200C1-56AD-4198-995B-B8FB8EB989BE}"
     >
         <Build>
             <Settings
-                ApplicationIcon = "App.ico"
+                ApplicationIcon = "Images\App.ico"
                 AssemblyKeyContainerName = ""
-                AssemblyName = "GoogleReader"
+                AssemblyName = "GoogleReaderNotifier"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -18,9 +18,9 @@
                 OutputType = "WinExe"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "GoogleReader"
+                RootNamespace = "GoogleReaderNotifier.WinUI"
                 RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = ""
+                StartupObject = "GoogleReaderNotifier.WinUI.ApplicationStartup"
             >
                 <Config
                     Name = "Debug"
@@ -67,57 +67,53 @@
                 <Reference
                     Name = "System"
                     AssemblyName = "System"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
-                />
-                <Reference
-                    Name = "System.Data"
-                    AssemblyName = "System.Data"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
-                />
-                <Reference
-                    Name = "System.Drawing"
-                    AssemblyName = "System.Drawing"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                    HintPath = "..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.dll"
                 />
                 <Reference
                     Name = "System.Windows.Forms"
                     AssemblyName = "System.Windows.Forms"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                    HintPath = "..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
                 />
                 <Reference
                     Name = "System.XML"
                     AssemblyName = "System.Xml"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                    HintPath = "..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "System.Web.Services"
-                    AssemblyName = "System.Web.Services"
-                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Web.Services.dll"
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
                 />
                 <Reference
                     Name = "System.Design"
                     AssemblyName = "System.Design"
-                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Design.dll"
+                    HintPath = "..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Design.dll"
+                />
+                <Reference
+                    Name = "GoogleReaderNotifier.ReaderAPI"
+                    Project = "{CFF93B2D-31FA-4DA2-B2DE-17E5E83DD73E}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
             </References>
         </Build>
         <Files>
             <Include>
                 <File
-                    RelPath = "App.ico"
-                    BuildAction = "EmbeddedResource"
+                    RelPath = "App.config"
+                    BuildAction = "None"
                 />
                 <File
-                    RelPath = "AssemblyInfo.cs"
+                    RelPath = "ApplicationStartup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "close.bmp"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "ColorStyle.cs"
+                    RelPath = "AssemblyInfo.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -127,64 +123,29 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "frmMain.cs"
+                    RelPath = "MainForm.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "frmMain.resx"
-                    DependentUpon = "frmMain.cs"
+                    RelPath = "MainForm.resx"
+                    DependentUpon = "MainForm.cs"
                     BuildAction = "EmbeddedResource"
                 />
                 <File
-                    RelPath = "GoogleTalkForm.cs"
+                    RelPath = "PreferencesForm.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "GoogleTalkForm.resx"
-                    DependentUpon = "GoogleTalkForm.cs"
+                    RelPath = "PreferencesForm.resx"
+                    DependentUpon = "PreferencesForm.cs"
                     BuildAction = "EmbeddedResource"
                 />
                 <File
-                    RelPath = "GoogleTalkFormDesigner.cs"
+                    RelPath = "PreferencesHelper.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "maximize.png"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "minimize.png"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "optionsForm.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "optionsForm.resx"
-                    DependentUpon = "optionsForm.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "ReaderAPI.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "readme.html"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "restore.png"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "skin.bmp"
-                    BuildAction = "EmbeddedResource"
                 />
                 <File
                     RelPath = "StartupHelper.cs"
@@ -197,17 +158,50 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "unread.ico"
+                    RelPath = "TaskbarNotifier.resx"
+                    DependentUpon = "TaskbarNotifier.cs"
                     BuildAction = "EmbeddedResource"
                 />
                 <File
-                    RelPath = "XmlINI.cs"
+                    RelPath = "UserPreferences.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
-                <Folder
-                    RelPath = "Web References\"
-                    WebReferences = "TRUE"
+                <File
+                    RelPath = "BaseClasses\BaseForm.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BaseClasses\BaseForm.resx"
+                    DependentUpon = "BaseForm.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "BaseClasses\BaseFormDesigner.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BaseClasses\ColorStyle.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Images\App.ico"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Images\close.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Images\skin.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Images\unread.ico"
+                    BuildAction = "EmbeddedResource"
                 />
             </Include>
         </Files>

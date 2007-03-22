@@ -11,10 +11,10 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace GoogleReader
+namespace GoogleReaderNotifier.WinUI.BaseClasses
 {
-	[ToolboxItem(false), Designer(typeof(GoogleTalkFormDesigner), typeof(IRootDesigner)), DesignerCategory("Form"), DefaultEvent("Load"), DesignTimeVisible(false)]
-	public class GoogleTalkForm : Form
+	[ToolboxItem(false), Designer(typeof(BaseFormDesigner), typeof(IRootDesigner)), DesignerCategory("Form"), DefaultEvent("Load"), DesignTimeVisible(false)]
+	public class BaseForm : Form
 	{	
 		#region Class Variables
 
@@ -49,7 +49,7 @@ namespace GoogleReader
 
 		#region Class Constructor
 
-		public GoogleTalkForm()
+		public BaseForm()
 		{
 			// Required for Windows Form Designer support
 			InitializeComponent();
@@ -86,15 +86,15 @@ namespace GoogleReader
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(GoogleTalkForm));
+			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(BaseForm));
 			// 
-			// GoogleTalkForm
+			// BaseForm
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.ClientSize = new System.Drawing.Size(304, 272);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "GoogleTalkForm";
+			this.Name = "BaseForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form1";
 			this.Disposed += new System.EventHandler(this.OnDisposed);
