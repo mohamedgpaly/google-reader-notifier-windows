@@ -17,7 +17,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace CustomUIControls
+namespace GoogleReaderNotifier.WinUI
 {
 	/// <summary>
 	/// TaskbarNotifier allows to display MSN style/Skinned instant messaging popups

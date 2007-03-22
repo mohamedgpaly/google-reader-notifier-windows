@@ -3,7 +3,7 @@
 "VSVersion" = "3:701"
 "ProjectType" = "8:{2C2AF0D9-9B47-4FE5-BEF2-169778172667}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:GoogleReaderSetup"
+"ProjectName" = "8:GoogleReaderNotifier.Setup"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -15,20 +15,32 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_9592AD9841904249BB3504E2F1C50EEF"
-        "OwnerKey" = "8:_F367B5E9E1D446119568013654742990"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DB68FDBA99A147D5A1F3C0AFA30D853A"
+        "MsmKey" = "8:_0037E9985E1D4956B4D9E865B33142F6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F367B5E9E1D446119568013654742990"
+        "MsmKey" = "8:_A38919AE1ED94DDC8EF4024E5BCBBC84"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C7E5160CF1714973AA4FD3A21518F215"
+        "OwnerKey" = "8:_FA1BF023F8C4E2C40865F906329C46E6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C7E5160CF1714973AA4FD3A21518F215"
+        "OwnerKey" = "8:_A38919AE1ED94DDC8EF4024E5BCBBC84"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FA1BF023F8C4E2C40865F906329C46E6"
+        "OwnerKey" = "8:_A38919AE1ED94DDC8EF4024E5BCBBC84"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -39,11 +51,11 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\GoogleReaderSetup.msi"
+        "OutputFilename" = "8:Debug\\GoogleReaderNotifier.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
@@ -55,7 +67,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\GoogleReaderSetup.msi"
+        "OutputFilename" = "8:Release\\GoogleReaderNotifier.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -82,7 +94,7 @@
         {
             "LaunchCondition"
             {
-                "{2522A265-4974-4402-83C5-3B575A2E935A}:_DEEB508736FA41B2B313546EB6D67020"
+                "{2522A265-4974-4402-83C5-3B575A2E935A}:_314E01C1C5B1442A91F719561CB61AFB"
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
@@ -96,12 +108,12 @@
         }
         "File"
         {
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_DB68FDBA99A147D5A1F3C0AFA30D853A"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_0037E9985E1D4956B4D9E865B33142F6"
             {
-            "SourcePath" = "8:..\\GoogleReaderNotifier\\readme.html"
-            "TargetName" = "8:readme.html"
+            "SourcePath" = "8:..\\GoogleReaderNotifier.WinUI\\Images\\App.ico"
+            "TargetName" = "8:App.ico"
             "Tag" = "8:"
-            "Folder" = "8:_2231FF2A900B4FD5B83AE8E37915E407"
+            "Folder" = "8:_F111452C1D5D4DB9A35ACB7DDC1751D5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -116,13 +128,66 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_FA1BF023F8C4E2C40865F906329C46E6"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:GoogleReaderNotifier.ReaderAPI, Version=1.0.2636.29406, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_FA1BF023F8C4E2C40865F906329C46E6"
+                    {
+                    "Name" = "8:GoogleReaderNotifier.ReaderAPI.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:GoogleReaderNotifier.ReaderAPI.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F111452C1D5D4DB9A35ACB7DDC1751D5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
         }
         "Folder"
         {
-            "{58C0ADA3-3CEA-43BD-A3B3-2EA121BC8217}:_2231FF2A900B4FD5B83AE8E37915E407"
+            "{78BAF5CE-F2E5-45BE-83BC-DB6AF387E941}:_6C5C7CD2BE0C4335992839D99157B219"
+            {
+            "Name" = "8:#1919"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:ProgramMenuFolder"
+                "Folders"
+                {
+                    "{F27BD5C5-A65D-4608-96D4-7C5DA1F76302}:_E0DF8C5C20594F8EB59FB298090D44D6"
+                    {
+                    "Name" = "8:Google Reader Notifier"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_3A13EA354B4F449997EA58B47CCFFB2E"
+                        "Folders"
+                        {
+                        }
+                    }
+                }
+            }
+            "{58C0ADA3-3CEA-43BD-A3B3-2EA121BC8217}:_F111452C1D5D4DB9A35ACB7DDC1751D5"
             {
             "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
@@ -134,29 +199,7 @@
                 {
                 }
             }
-            "{78BAF5CE-F2E5-45BE-83BC-DB6AF387E941}:_38C91B0ED9854EC9B630471B29BEA22A"
-            {
-            "Name" = "8:#1919"
-            "AlwaysCreate" = "11:FALSE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Property" = "8:ProgramMenuFolder"
-                "Folders"
-                {
-                    "{F27BD5C5-A65D-4608-96D4-7C5DA1F76302}:_CA7C12597FCB40F197398684DF8D81CA"
-                    {
-                    "Name" = "8:Google Reader Notifier"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_C2CA6E8A49BD4CC39DF6B7FDED48AB9A"
-                        "Folders"
-                        {
-                        }
-                    }
-                }
-            }
-            "{78BAF5CE-F2E5-45BE-83BC-DB6AF387E941}:_9A540B244D624DAE8AEB4D7219BADBFC"
+            "{78BAF5CE-F2E5-45BE-83BC-DB6AF387E941}:_FC8E7B4CB0B5415F87B360A8C25D0817"
             {
             "Name" = "8:#1916"
             "AlwaysCreate" = "11:FALSE"
@@ -182,9 +225,9 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Google Reader Notifier"
-        "ProductCode" = "8:{27CF46A8-CBB7-4168-B238-B141D8741CCB}"
-        "PackageCode" = "8:{8F68BD58-B8B2-4EF9-9E61-CCF8E8D2DD02}"
-        "UpgradeCode" = "8:{CAEB70FD-C720-4D52-993A-0F8D01A3A811}"
+        "ProductCode" = "8:{2E5F1178-6266-47C4-8639-D363773D39D0}"
+        "PackageCode" = "8:{EA0D0195-9111-4E30-BC91-306E1F1F2E7B}"
+        "UpgradeCode" = "8:{E6871043-1449-472D-A828-7644296B9498}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
@@ -192,14 +235,14 @@
         "Manufacturer" = "8:BrainDotty"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.braindotty.com"
-        "Title" = "8:Google Reader Notifier"
+        "Title" = "8:Google Reader Notifier Setup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Lowell Heddings"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Google Reader Notifier is an application that runs in your System Tray and alerts you when there are new unread items in Google Reader"
         "ARPURLINFOABOUT" = "8:http://www.braindotty.com"
-        "ARPPRODUCTICON" = "8:_F367B5E9E1D446119568013654742990"
-        "ARPIconIndex" = "3:32512"
+        "ARPPRODUCTICON" = "8:"
+        "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
         }
@@ -209,7 +252,7 @@
             {
                 "Keys"
                 {
-                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_F1CD7460DCEC40959594EB6413A914F1"
+                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_1076706B0DA947CEA09855A6BA99CAB6"
                     {
                     "Name" = "8:Software"
                     "Condition" = "8:"
@@ -218,7 +261,7 @@
                     "Transitive" = "11:FALSE"
                         "Keys"
                         {
-                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_BCB2ECDDDE544414A3D94B648FEB8FC9"
+                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_C1F658693FD04A449BA205FDAF5EC5B6"
                             {
                             "Name" = "8:[Manufacturer]"
                             "Condition" = "8:"
@@ -243,7 +286,7 @@
             {
                 "Keys"
                 {
-                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_D141DC7C49A944938720CF0100259276"
+                    "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_23C62C1583D440A19B7E527FCE8F6BF6"
                     {
                     "Name" = "8:Software"
                     "Condition" = "8:"
@@ -252,7 +295,7 @@
                     "Transitive" = "11:FALSE"
                         "Keys"
                         {
-                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_D7721F77DE86461D9460055DA516634A"
+                            "{6A471EEF-D31B-40F8-BCF6-C9E8EC783F36}:_8E17EF650D8049B6AC04C821A8C2906D"
                             {
                             "Name" = "8:[Manufacturer]"
                             "Condition" = "8:"
@@ -297,31 +340,87 @@
         }
         "Shortcut"
         {
-            "{478F747B-8505-45D1-9AAE-8C3B645C26E3}:_24DD2B2341D04BC59583F066CB47D90A"
+            "{478F747B-8505-45D1-9AAE-8C3B645C26E3}:_63CCB2FD16F240BEBB1E3B00E8391455"
             {
             "Name" = "8:Google Reader Notifier"
             "Arguments" = "8:"
             "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:32512"
+            "ShowCmd" = "3:7"
+            "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_F367B5E9E1D446119568013654742990"
-            "Folder" = "8:_CA7C12597FCB40F197398684DF8D81CA"
-            "WorkingFolder" = "8:_2231FF2A900B4FD5B83AE8E37915E407"
-            "Icon" = "8:_F367B5E9E1D446119568013654742990"
+            "Target" = "8:_A38919AE1ED94DDC8EF4024E5BCBBC84"
+            "Folder" = "8:_E0DF8C5C20594F8EB59FB298090D44D6"
+            "WorkingFolder" = "8:_F111452C1D5D4DB9A35ACB7DDC1751D5"
+            "Icon" = "8:_0037E9985E1D4956B4D9E865B33142F6"
             "Feature" = "8:"
             }
         }
         "UserInterface"
         {
-            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_49618C25B5104E3F812827A206B68F5B"
+            "{B654A020-6903-4E6A-A86C-75DC463DB54B}:_1A141D621CD447DEBD50BDBF8187F062"
+            {
+            "UseDynamicProperties" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "SourcePath" = "8:<VsdDialogDir>\\VsdBasicDialogs.wim"
+            }
+            "{B654A020-6903-4E6A-A86C-75DC463DB54B}:_3F4DBEA136A34D88AC23EFCB8FFBC4BD"
+            {
+            "UseDynamicProperties" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "SourcePath" = "8:<VsdDialogDir>\\VsdUserInterface.wim"
+            }
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_579CAACF45274227876657EADBC858DB"
+            {
+            "Name" = "8:#1901"
+            "Sequence" = "3:2"
+            "Attributes" = "3:2"
+                "Dialogs"
+                {
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_2BC70A5A7FD3468CAB524B832C023213"
+                    {
+                    "Sequence" = "3:100"
+                    "DisplayName" = "8:Progress"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "ShowProgress"
+                            {
+                            "Name" = "8:ShowProgress"
+                            "DisplayName" = "8:#1009"
+                            "Description" = "8:#1109"
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:1"
+                            "DefaultValue" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
+                }
+            }
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_6703DC4DE05A40C39994B8E1C3D549A5"
             {
             "Name" = "8:#1902"
             "Sequence" = "3:2"
             "Attributes" = "3:3"
                 "Dialogs"
                 {
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_0A8A162611B147DF843DF4B798E49BF0"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_45B02A07F6D7487EB31F6106E8836E56"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Finished"
@@ -345,20 +444,14 @@
                     }
                 }
             }
-            "{B654A020-6903-4E6A-A86C-75DC463DB54B}:_56CC0D79DAF84CB5B1B09BD0B5FE9145"
-            {
-            "UseDynamicProperties" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:<VsdDialogDir>\\VsdUserInterface.wim"
-            }
-            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_704BD5DAB047456AB3A1A7C6E976B189"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_6A768DFB49BD42BDAF79E95A8FEAF6F9"
             {
             "Name" = "8:#1901"
             "Sequence" = "3:1"
             "Attributes" = "3:2"
                 "Dialogs"
                 {
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_8339463E1E3B4956A8987E9E7013332B"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_93600E5EFB8C4C6CA155A0AE00A652AF"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Progress"
@@ -395,14 +488,36 @@
                     }
                 }
             }
-            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_7D0EF1454B4648B4B408CFA16570CA3D"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_7F0217E9F9BF4E94A8EEE30E0A3BE33A"
             {
             "Name" = "8:#1900"
             "Sequence" = "3:1"
             "Attributes" = "3:1"
                 "Dialogs"
                 {
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_34F6BBE4EFDD4E3483A06E66F6FD6BB3"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_28C1133F3D1A41489BACA534A41CCEEC"
+                    {
+                    "Sequence" = "3:300"
+                    "DisplayName" = "8:Confirm Installation"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_713C2D53F463406FB15AC617E81260AC"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Welcome"
@@ -450,29 +565,7 @@
                             }
                         }
                     }
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_3F44586A769E409AA94C4916F502A288"
-                    {
-                    "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_60CBFBE9A98E439393536CD542270EE5"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_EBF430357FF84AB484B9F0DE2E3CC68E"
                     {
                     "Sequence" = "3:200"
                     "DisplayName" = "8:Installation Folder"
@@ -496,14 +589,58 @@
                     }
                 }
             }
-            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_AF8F465FA5C54FFCA109846081835FDC"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_95D47DDEF1604A048B982297AA51B226"
             {
             "Name" = "8:#1900"
             "Sequence" = "3:2"
             "Attributes" = "3:1"
                 "Dialogs"
                 {
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_358D7E202CA14C70A61A55C7FDF8B43C"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_62362328F7AC44209D8A5D3D77BD523D"
+                    {
+                    "Sequence" = "3:200"
+                    "DisplayName" = "8:Installation Folder"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_A5651BD57E2B437CB0FE96944B2E8028"
+                    {
+                    "Sequence" = "3:300"
+                    "DisplayName" = "8:Confirm Installation"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_C7DC5C978EEB447E9D13B04983166D10"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Welcome"
@@ -551,104 +688,16 @@
                             }
                         }
                     }
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_7FBDD164ABDF4C9F840DD273B15D406C"
-                    {
-                    "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_AA7F908D766B46ADB49C4DA9DACFB9EF"
-                    {
-                    "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
                 }
             }
-            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_D436E691DBB44B8AA6D40B675B59AFE9"
-            {
-            "Name" = "8:#1901"
-            "Sequence" = "3:2"
-            "Attributes" = "3:2"
-                "Dialogs"
-                {
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_A5B6B66C7F694F0DB660C73CEF1A64F5"
-                    {
-                    "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "ShowProgress"
-                            {
-                            "Name" = "8:ShowProgress"
-                            "DisplayName" = "8:#1009"
-                            "Description" = "8:#1109"
-                            "Type" = "3:5"
-                            "ContextData" = "8:1;True=1;False=0"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:0"
-                            "Value" = "3:1"
-                            "DefaultValue" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
-                }
-            }
-            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_E005B6466EE54ACDB0FDF0F04C780F49"
+            "{8D9DEE8B-DD8B-4F48-9072-C4364E4F4011}:_FA8128401C6E4F059B5325695E9DFAA6"
             {
             "Name" = "8:#1902"
             "Sequence" = "3:1"
             "Attributes" = "3:3"
                 "Dialogs"
                 {
-                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_23BAE0A1F7D84F1B96997A5455C7C6C3"
+                    "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_72B62A088EBD456D925275CA5A03762A"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Finished"
@@ -685,16 +734,10 @@
                     }
                 }
             }
-            "{B654A020-6903-4E6A-A86C-75DC463DB54B}:_F0389AF0BAAE42ACAA76BA411ADD0289"
-            {
-            "UseDynamicProperties" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:<VsdDialogDir>\\VsdBasicDialogs.wim"
-            }
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_9592AD9841904249BB3504E2F1C50EEF"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_C7E5160CF1714973AA4FD3A21518F215"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
@@ -711,40 +754,12 @@
         }
         "ProjectOutput"
         {
-            "{8062640A-2EEE-46E9-AB67-688E9A886E9F}:_B66370E6710845848CD87D302DD72734"
+            "{8062640A-2EEE-46E9-AB67-688E9A886E9F}:_A38919AE1ED94DDC8EF4024E5BCBBC84"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\GoogleReaderNotifier.WinUI\\obj\\Debug\\GoogleReaderNotifier.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_2231FF2A900B4FD5B83AE8E37915E407"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Documentation"
-            "OutputProjectGuid" = "8:{4BF6FE04-EBD6-423A-A31E-A4445950D833}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{8062640A-2EEE-46E9-AB67-688E9A886E9F}:_F367B5E9E1D446119568013654742990"
-            {
-            "SourcePath" = "8:..\\GoogleReaderNotifier\\obj\\Debug\\GoogleReader.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_2231FF2A900B4FD5B83AE8E37915E407"
+            "Folder" = "8:_F111452C1D5D4DB9A35ACB7DDC1751D5"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -761,7 +776,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{4BF6FE04-EBD6-423A-A31E-A4445950D833}"
+            "OutputProjectGuid" = "8:{2DB200C1-56AD-4198-995B-B8FB8EB989BE}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

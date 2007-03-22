@@ -1,16 +1,12 @@
-#region Includes
-
 using System;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
 
-#endregion 
-
-namespace GoogleReader
+namespace GoogleReaderNotifier.WinUI
 {
 	/// <summary>
-	/// Provides Encryption and SHA1 Hashing functions
+	/// Summary description for Encryption.
 	/// </summary>
 	public class Encryption
 	{
@@ -290,7 +286,5 @@ namespace GoogleReader
 			return plainText;
 		}
 		#endregion 
-
 	}
-
 }

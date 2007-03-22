@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleReaderNotifier.WinUI", "GoogleReaderNotifier.WinUI\GoogleReaderNotifier.WinUI.csproj", "{2DB200C1-56AD-4198-995B-B8FB8EB989BE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleReaderNotifier.ReaderAPI", "GoogleReaderNotifier.ReaderAPI\GoogleReaderNotifier.ReaderAPI.csproj", "{CFF93B2D-31FA-4DA2-B2DE-17E5E83DD73E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GoogleReaderNotifier.Setup", "GoogleReaderNotifier.Setup\GoogleReaderNotifier.Setup.vdproj", "{9A0D9CB9-4F88-4C05-8049-886616F062D8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{2DB200C1-56AD-4198-995B-B8FB8EB989BE}.Debug.ActiveCfg = Debug|.NET
+		{2DB200C1-56AD-4198-995B-B8FB8EB989BE}.Debug.Build.0 = Debug|.NET
+		{2DB200C1-56AD-4198-995B-B8FB8EB989BE}.Release.ActiveCfg = Release|.NET
+		{2DB200C1-56AD-4198-995B-B8FB8EB989BE}.Release.Build.0 = Release|.NET
+		{CFF93B2D-31FA-4DA2-B2DE-17E5E83DD73E}.Debug.ActiveCfg = Debug|.NET
+		{CFF93B2D-31FA-4DA2-B2DE-17E5E83DD73E}.Debug.Build.0 = Debug|.NET
+		{CFF93B2D-31FA-4DA2-B2DE-17E5E83DD73E}.Release.ActiveCfg = Release|.NET
+		{CFF93B2D-31FA-4DA2-B2DE-17E5E83DD73E}.Release.Build.0 = Release|.NET
+		{9A0D9CB9-4F88-4C05-8049-886616F062D8}.Debug.ActiveCfg = Debug
+		{9A0D9CB9-4F88-4C05-8049-886616F062D8}.Release.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

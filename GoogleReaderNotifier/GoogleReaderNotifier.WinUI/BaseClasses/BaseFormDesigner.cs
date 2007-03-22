@@ -11,9 +11,9 @@ using System.Security.Permissions;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace GoogleReader
+namespace GoogleReaderNotifier.WinUI.BaseClasses
 {
-	public class GoogleTalkFormDesigner : DocumentDesigner
+	public class BaseFormDesigner : DocumentDesigner
 	{
 		#region Class Variables
 
@@ -60,9 +60,9 @@ namespace GoogleReader
 		/// <param name="pe">A <see cref="System.Windows.Forms.PaintEventArgs"/> that provides data for the event.</param>
 		protected override void OnPaintAdornments(PaintEventArgs pe) 
 		{ 		
-			if (this.Control is GoogleTalkForm && this.DrawGrid == true)
+			if (this.Control is BaseForm && this.DrawGrid == true)
 			{
-				GoogleTalkForm control = (GoogleTalkForm)this.Control;
+				BaseForm control = (BaseForm)this.Control;
 				Rectangle rect = control.BodyRectangle;
 				rect.X++;
 				rect.Width++;
@@ -134,9 +134,9 @@ namespace GoogleReader
 			Point pointTopLeft;
 			Point pointBottomRight;
 
-			if (this.Control is GoogleTalkForm)
+			if (this.Control is BaseForm)
 			{
-				GoogleTalkForm form = (GoogleTalkForm)this.Control;
+				BaseForm form = (BaseForm)this.Control;
 
 				pointTopLeft = control.Location;
 

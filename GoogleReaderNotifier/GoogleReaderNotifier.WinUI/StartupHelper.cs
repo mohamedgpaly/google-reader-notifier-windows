@@ -2,8 +2,11 @@ using System;
 using Microsoft.Win32;
 using System.Windows.Forms;
 
-namespace GoogleReader
+namespace GoogleReaderNotifier.WinUI
 {
+	/// <summary>
+	/// Summary description for StartupHelper.
+	/// </summary>
 	public class StartupHelper
 	{
 		public static void StartWithWindows(bool shouldStartWithWindows)
