@@ -3,6 +3,8 @@ using System.Net;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Collections.Generic;
+using GoogleReaderNotifier.ReaderAPI.Data;
 
 namespace GoogleReaderNotifier.ReaderAPI
 {
@@ -16,75 +18,125 @@ namespace GoogleReaderNotifier.ReaderAPI
 		private CookieCollection _Cookies = new CookieCollection();
 		private CookieContainer _cookiesContainer = new CookieContainer();
 		private bool _loggedIn = false;
-		private int _totalCount = 0;
-		private string _tagCount = "";
-	
+		
 		#endregion 
 		
-		public int TotalCount
-		{
-			get{return _totalCount;}
-			set{_totalCount = value;}
-		}
-
-		public string TagCount
-		{
-			get{return _tagCount;}
-			set{_tagCount = value;}
-		}
+		public bool LoggedIn
+        {
+            get { return _loggedIn; }
+        }
 
 		#region Application Code
 
-		// https://www.google.com/reader/atom/user/-/state/com.google/reading-list // get full feed of items
-		public string GetDetailedCount(string username, string password, string filters)
+        // https://www.google.com/reader/atom/user/-/state/com.google/reading-list // get full feed of items
+        
+		public bool Login(string username, string password, string errorMessage)
 		{
-			//verify login
-			if(!_loggedIn)
-			{
-				string loginResult = this.Login(username, password);
-				if(loginResult != string.Empty)
-					return loginResult;
-			}
+            bool result;
 
-			//get the counts from google
-			XmlDocument xdoc = this.GetUnreadCounts();
+            errorMessage = "";
 
-			
-			string detailedcount = "";
-
-			// if filters are set, then don't check the regular unread items
-			if(filters.Trim().Length == 0)
-			{
-				this._totalCount = this.CountAllFeeds(xdoc);
-			}
-			else
-			{
-				this._totalCount = this.CountFilteredFeeds(xdoc, filters, ref detailedcount);
-			}
-			
-			detailedcount = this._totalCount.ToString() + " unread items" + Environment.NewLine + detailedcount;
-			this.TagCount = detailedcount;
-
-			return detailedcount;
-		}
-
-
-		public string Login(string username, string password)
-		{
 			HttpWebRequest req = CreateRequest("https://www.google.com/accounts/ServiceLoginAuth");
-			PostLoginForm(req, String.Format("Email={0}&Passwd={1}&service=reader&continue=https://www.google.com/reader&nui=1", username, password));
-			if(GetResponseString(req).IndexOf("http://www.google.com/reader/atom/user/") != -1)
-			{
-				_loggedIn = true;
-				return string.Empty;
-			}
-			else
-			{
-				return "AUTH_ERROR";
-			}
-		}
+			
+            PostLoginForm(req, String.Format("Email={0}&Passwd={1}&service=reader&continue=https://www.google.com/reader&nui=1", username, password));
+			
+            result = GetResponseString(req).IndexOf("http://www.google.com/reader/atom/user/") != -1;
+            
+            _loggedIn = result;
 
-		private XmlDocument GetUnreadCounts()
+            if(!result)
+              errorMessage = "AUTH_ERROR";
+
+            return result;
+        }
+
+        private delegate string LocateUnreadItemIdentifierDelegate(string identifierSource);
+
+        private string LocateUnreadFeedIdentifier(string identifierSource)
+        {
+            return identifierSource.Substring(identifierSource.LastIndexOf("/http") + 1);
+        }
+
+        private string LocateUnreadTagIdentifier(string identifierSource)
+        {
+            return identifierSource.Substring(identifierSource.LastIndexOf("/label/") + "/label/".Length);
+        }
+
+        public bool CollectUnreadFeeds(UnreadItemCollection unreadFeeds)
+        {
+            System.Diagnostics.Debug.Assert(unreadFeeds != null, "unreadFeeds must be assigned.");
+            
+            return CollectUnreadItems(unreadFeeds, null, null);
+        }
+
+        public bool CollectUnreadTags(UnreadItemCollection unreadTags, List<string> tagFilterList)
+        {
+            System.Diagnostics.Debug.Assert(unreadTags != null, "unreadTags must be assigned.");
+            
+            return CollectUnreadItems(null, unreadTags, tagFilterList);
+        }
+
+        public bool CollectUnreadItems(UnreadItemCollection unreadFeeds, UnreadItemCollection unreadTags, List<string> identifierFilterList)
+        {
+            bool result = true;
+            //int unreadCount;
+            XmlDocument xdoc;
+
+            result = LoggedIn;
+            
+            if (result)
+            {
+                xdoc = this.GetAllUnreadCountsXMLDocument();
+
+                // Collect feed information
+                if (unreadFeeds != null)
+                {
+                    unreadFeeds.Clear();
+
+                    CollectUnreadItemsBySelectedNodes(xdoc, "//object/string[contains(.,'feed/http')]", unreadFeeds, LocateUnreadFeedIdentifier, null);
+                }
+
+
+                // Collect tag information
+                if (unreadTags != null)
+                {
+                    unreadTags.Clear();
+
+                    CollectUnreadItemsBySelectedNodes(xdoc, "//object/string[contains(.,'/label/') and contains(.,'user/')]", unreadTags, LocateUnreadTagIdentifier, identifierFilterList);
+                }
+            }
+
+            return result;
+        }
+
+        private void CollectUnreadItemsBySelectedNodes(XmlDocument xdoc, string nodeSelection, UnreadItemCollection unreadItems, LocateUnreadItemIdentifierDelegate locateIdentifierDelegate, List<string> identifierFilterList)
+        {
+            int unreadCount;
+            UnreadItem unreadItem;
+            string identifier;
+            bool addToList;
+
+            foreach (XmlNode node in xdoc.SelectNodes(nodeSelection))
+            {
+                unreadCount = Convert.ToInt32(node.ParentNode.SelectSingleNode("number").InnerText);
+                identifier = locateIdentifierDelegate(node.InnerText);
+
+                addToList = (unreadCount > 0) && ((identifierFilterList == null) || identifierFilterList.Contains(identifier));
+                
+                if (addToList)
+                {
+                    unreadItem = new UnreadItem();
+
+                    unreadItem.Identifier = identifier;
+                    unreadItem.ArticleCount = unreadCount;
+
+                    
+                    unreadItems.Add(unreadItem);
+                }
+            }
+        }
+
+        private XmlDocument GetAllUnreadCountsXMLDocument()
 		{
 			string url = "https://www.google.com/reader/api/0/unread-count?all=true";
 			string theXml = GetResponseString(CreateRequest(url));
@@ -95,43 +147,7 @@ namespace GoogleReaderNotifier.ReaderAPI
 			return xdoc;
 		}
 
-		private int CountAllFeeds(XmlDocument xdoc)
-		{
-			int totalFeeds = 0;
-			foreach(XmlNode node in xdoc.SelectNodes("//object/string[contains(.,'feed/http')]"))
-			{
-				int thenumber = Convert.ToInt32(node.ParentNode.SelectSingleNode("number").InnerText);
-				totalFeeds += thenumber;
-			}
-			return totalFeeds;
-		}
-
-		private int CountFilteredFeeds(XmlDocument xdoc, string filters, ref string filterBreakdown)
-		{
-			// filters have been set, check here for just the tagged items.
-			string[] filterlist = filters.Split(" ".ToCharArray());
-			int totalFeeds = 0;
-
-			foreach(XmlNode node in xdoc.SelectNodes("//object/string[contains(.,'/label/') and contains(.,'user/')]"))
-			{
-				string thelabel = node.InnerText.Substring(node.InnerText.LastIndexOf("/")+1);  //user/10477630455154158284/label/food
-
-				foreach(string thefilter in filterlist)
-				{
-					if(thefilter == thelabel)
-					{
-						int thenumber = Convert.ToInt32(node.ParentNode.SelectSingleNode("number").InnerText);
-						totalFeeds += thenumber;
-						if(thenumber > 0)
-						{
-							filterBreakdown += thenumber.ToString() + " in " + thelabel + Environment.NewLine;
-						}					
-					}
-				}
-			}
-			return totalFeeds;
-		}
-		#endregion 
+        #endregion 
 
 		#region HTTP Functions
 
@@ -176,9 +192,10 @@ namespace GoogleReaderNotifier.ReaderAPI
 		private HttpWebRequest CreateRequest(string url)
 		{
 			HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
-			WebProxy defaultProxy = WebProxy.GetDefaultProxy();
+			//WebProxy defaultProxy = WebProxy.GetDefaultProxy();
+            IWebProxy defaultProxy = HttpWebRequest.DefaultWebProxy;
 			
-			req.Proxy = defaultProxy; 
+			req.Proxy = defaultProxy; // if we wanted to disable proxying, can be done by setting to null I think
 			//req.UserAgent = _user.UserAgent;
 			req.CookieContainer = _cookiesContainer;
 			//req.Referer = _currentURL; // set the referring url properly to appear as a regular browser
