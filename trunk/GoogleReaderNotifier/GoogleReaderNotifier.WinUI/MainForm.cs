@@ -29,7 +29,7 @@ namespace GoogleReaderNotifier.WinUI
 		private System.ComponentModel.IContainer components;
 
 		private bool _showCountTooltip = false;
-		private string _labelFilter= string.Empty;
+		private List<string> _tagFilter = null;
 		private bool _animatePopup = true;
 		private string _username = string.Empty;
 		private string _password = string.Empty;
@@ -194,6 +194,7 @@ namespace GoogleReaderNotifier.WinUI
             if (RequiredFilesExist())
             {
                 this.LoadSettings();
+                this.CheckForUpdates();
             }
             else
             {
@@ -293,15 +294,7 @@ namespace GoogleReaderNotifier.WinUI
                     
                     if (HasFilterTags())
                     {
-                        string[] tags = _labelFilter.Split(" ".ToCharArray());
-                        List<string> tagFilterList = new List<string>();
-
-                        foreach (string tag in tags)
-                        {
-                            tagFilterList.Add(tag);
-                        }
-
-                        collectionResult = reader.CollectUnreadTags(unreadItems, tagFilterList);
+                        collectionResult = reader.CollectUnreadTags(unreadItems, _tagFilter);
                     }
                     else
                     {
@@ -348,8 +341,7 @@ namespace GoogleReaderNotifier.WinUI
             
             if (unreadItems.Count > 0)
             {
-                newUnreadCount = unreadItems.TotalUnreadItemArticles();
-                //newUnreadCount = CountEffectiveUnreadItems(unreadCounts);
+                newUnreadCount = unreadItems.TotalUnreadItemArticles();                
 
                 if (_currentUnreadItems != null)
                 {
@@ -444,7 +436,7 @@ namespace GoogleReaderNotifier.WinUI
 
         private bool HasFilterTags()
         {
-            return _labelFilter != string.Empty;
+            return (_tagFilter != null) && (_tagFilter.Count > 0);
         }
 
 		private DialogResult DisplayPreferences()
@@ -485,7 +477,7 @@ namespace GoogleReaderNotifier.WinUI
             _checkForUpdatesTimer.Interval = prefs.TimerMinutes * DATETIME_MINUTE_ONE;
 			_showCountTooltip = prefs.ShowCountTooltip;
 			_animatePopup = prefs.AnimatePopup;
-			_labelFilter = prefs.FilterLabels;
+			_tagFilter = prefs.FilterTags;
 			_username = prefs.Username;
 			_password = prefs.Password;
 
@@ -500,10 +492,8 @@ namespace GoogleReaderNotifier.WinUI
 			{
 				this.DisplayPreferences();
 			}
+
 			_checkForUpdatesTimer.Start();
-
-			CheckForUpdates();
-
 		}
 
         private void _checkForUpdatesTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

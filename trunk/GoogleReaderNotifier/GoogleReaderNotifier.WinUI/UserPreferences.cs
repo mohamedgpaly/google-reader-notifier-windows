@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace GoogleReaderNotifier.WinUI
@@ -24,12 +25,12 @@ namespace GoogleReaderNotifier.WinUI
 			set{_timerMinutes = value;}
 		}
 
-		private string _filterLabels;
-		public string FilterLabels
-		{
-			get{return (_filterLabels == null ? string.Empty : _filterLabels);}
-			set{_filterLabels = value;}
-		}
+        private List<string> _filterTags;
+        public List<string> FilterTags
+        {
+            get { return _filterTags; }
+            set { _filterTags = value; }
+        }
 
 		private bool _showCountTooltip = true;
 		public bool ShowCountTooltip

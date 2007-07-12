@@ -52,12 +52,12 @@ namespace GoogleReaderNotifier.ReaderAPI
 
         private delegate string LocateUnreadItemIdentifierDelegate(string identifierSource);
 
-        private string LocateUnreadFeedIdentifier(string identifierSource)
+        private string LocateFeedIdentifier(string identifierSource)
         {
             return identifierSource.Substring(identifierSource.LastIndexOf("/http") + 1);
         }
 
-        private string LocateUnreadTagIdentifier(string identifierSource)
+        private string LocateTagIdentifier(string identifierSource)
         {
             return identifierSource.Substring(identifierSource.LastIndexOf("/label/") + "/label/".Length);
         }
@@ -74,6 +74,30 @@ namespace GoogleReaderNotifier.ReaderAPI
             System.Diagnostics.Debug.Assert(unreadTags != null, "unreadTags must be assigned.");
             
             return CollectUnreadItems(null, unreadTags, tagFilterList);
+        }
+
+        public void CollectTags(List<String> tags)
+        {
+            System.Diagnostics.Debug.Assert(tags != null, "tags must be assigned.");
+
+            if (!LoggedIn)
+            {
+                new Exception("Must be logged in to collect tags");
+            }
+
+            XmlDocument xdoc;
+            string identifier;
+
+            xdoc = this.GetAllUnreadCountsXMLDocument();
+
+            tags.Clear();
+
+            foreach (XmlNode node in xdoc.SelectNodes("//object/string[contains(.,'/label/') and contains(.,'user/')]"))
+            {
+                identifier = LocateTagIdentifier(node.InnerText);
+
+                tags.Add(identifier);
+            }
         }
 
         public bool CollectUnreadItems(UnreadItemCollection unreadFeeds, UnreadItemCollection unreadTags, List<string> identifierFilterList)
@@ -93,7 +117,7 @@ namespace GoogleReaderNotifier.ReaderAPI
                 {
                     unreadFeeds.Clear();
 
-                    CollectUnreadItemsBySelectedNodes(xdoc, "//object/string[contains(.,'feed/http')]", unreadFeeds, LocateUnreadFeedIdentifier, null);
+                    CollectUnreadItemsBySelectedNodes(xdoc, "//object/string[contains(.,'feed/http')]", unreadFeeds, LocateFeedIdentifier, null);
                 }
 
 
@@ -102,7 +126,7 @@ namespace GoogleReaderNotifier.ReaderAPI
                 {
                     unreadTags.Clear();
 
-                    CollectUnreadItemsBySelectedNodes(xdoc, "//object/string[contains(.,'/label/') and contains(.,'user/')]", unreadTags, LocateUnreadTagIdentifier, identifierFilterList);
+                    CollectUnreadItemsBySelectedNodes(xdoc, "//object/string[contains(.,'/label/') and contains(.,'user/')]", unreadTags, LocateTagIdentifier, identifierFilterList);
                 }
             }
 
@@ -134,7 +158,7 @@ namespace GoogleReaderNotifier.ReaderAPI
                     unreadItems.Add(unreadItem);
                 }
             }
-        }
+        }        
 
         private XmlDocument GetAllUnreadCountsXMLDocument()
 		{
