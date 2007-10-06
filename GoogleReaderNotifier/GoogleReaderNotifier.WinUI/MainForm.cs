@@ -236,7 +236,7 @@ namespace GoogleReaderNotifier.WinUI
             _trayNotifier.SetBackgroundBitmap(new Bitmap(GetType(), "Images.skin.bmp"), Color.FromArgb(255, 0, 255));
             _trayNotifier.SetCloseBitmap(new Bitmap(GetType(), "Images.close.bmp"), Color.FromArgb(255, 0, 255), new Point(243, 7));
             _trayNotifier.TitleRectangle = new Rectangle(40, 9, 70, 25);
-            _trayNotifier.ContentRectangle = new Rectangle(78, 15, 150, 20);
+            _trayNotifier.ContentRectangle = new Rectangle(70, 15, 158, 20);
             _trayNotifier.NormalContentFont = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Pixel);
             _trayNotifier.HoverContentFont = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Pixel);
             _trayNotifier.HoverContentColor = Color.FromArgb(123, 150, 198);
