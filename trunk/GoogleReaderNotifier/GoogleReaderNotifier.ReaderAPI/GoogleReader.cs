@@ -33,14 +33,14 @@ namespace GoogleReaderNotifier.ReaderAPI
 		public bool Login(string username, string password, string errorMessage)
 		{
             bool result;
-
+            
             errorMessage = "";
 
 			HttpWebRequest req = CreateRequest("https://www.google.com/accounts/ServiceLoginAuth");
-			
+            
             PostLoginForm(req, String.Format("Email={0}&Passwd={1}&service=reader&continue=https://www.google.com/reader", username, password));
-			
-            result = GetResponseString(req).IndexOf("http://www.google.com.au/accounts/SetSID?") != -1;
+
+            result = GetResponseString(req).IndexOf("_USER_ID =") != -1;
             
             _loggedIn = result;
 
