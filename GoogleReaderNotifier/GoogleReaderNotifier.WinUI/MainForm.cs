@@ -31,6 +31,7 @@ namespace GoogleReaderNotifier.WinUI
 		private bool _showCountTooltip = false;
 		private List<string> _tagFilter = null;
 		private bool _animatePopup = true;
+		private string _browserPath = string.Empty;
 		private string _username = string.Empty;
 		private string _password = string.Empty;
 
@@ -234,9 +235,9 @@ namespace GoogleReaderNotifier.WinUI
         {
             _trayNotifier = new TaskbarNotifier();
             _trayNotifier.SetBackgroundBitmap(new Bitmap(GetType(), "Images.skin.bmp"), Color.FromArgb(255, 0, 255));
-            _trayNotifier.SetCloseBitmap(new Bitmap(GetType(), "Images.close.bmp"), Color.FromArgb(255, 0, 255), new Point(243, 7));
+            _trayNotifier.SetCloseBitmap(new Bitmap(GetType(), "Images.close.bmp"), Color.FromArgb(255, 0, 255), new Point(287, 7));
             _trayNotifier.TitleRectangle = new Rectangle(40, 9, 70, 25);
-            _trayNotifier.ContentRectangle = new Rectangle(70, 15, 158, 20);
+            _trayNotifier.ContentRectangle = new Rectangle(70, 15, 200, 20);
             _trayNotifier.NormalContentFont = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Pixel);
             _trayNotifier.HoverContentFont = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Pixel);
             _trayNotifier.HoverContentColor = Color.FromArgb(123, 150, 198);
@@ -248,7 +249,10 @@ namespace GoogleReaderNotifier.WinUI
 
 		private void HandleTrayNotifierContentClicked(object sender, System.EventArgs e)
 		{
-            System.Diagnostics.Process.Start(ConfigurationManager.AppSettings["GoogleReaderUrl"]);
+			if (_browserPath == "")
+				System.Diagnostics.Process.Start(ConfigurationSettings.AppSettings["GoogleReaderUrl"]);
+			else
+				System.Diagnostics.Process.Start(_browserPath, ConfigurationSettings.AppSettings["GoogleReaderUrl"]);
 			ResetTrayIcon();
 		}
 
@@ -280,7 +284,7 @@ namespace GoogleReaderNotifier.WinUI
             try
             {
                 // if there are no errors, this will be restarted.
-                _checkForUpdatesTimer.Stop();
+                //_checkForUpdatesTimer.Stop();//but what if not? it should never stop.
 
 				//verify the user has entered credentials
                 if (this.VerifyLoginEntered())
@@ -288,9 +292,7 @@ namespace GoogleReaderNotifier.WinUI
                     //call the Google API
                     GoogleReader reader = new GoogleReader();
                     
-                    string errorMessage = "";
-
-                    reader.Login(_username, _password, errorMessage);
+                    reader.Login(_username, _password);
                     
                     if (HasFilterTags())
                     {
@@ -382,7 +384,11 @@ namespace GoogleReaderNotifier.WinUI
                         System.Media.SoundPlayer player = new System.Media.SoundPlayer();
 
                         player.SoundLocation = prefs.NotificationAudioFilePath;
-                        player.Play();
+						try
+						{
+							player.Play();
+						}
+						catch { }
                     }
 
                     if (_animatePopup)
@@ -398,7 +404,7 @@ namespace GoogleReaderNotifier.WinUI
             {
                 _currentUnreadItems = null;
                 ResetTrayIcon();
-                _notifyIcon.Text = "Google Reader Notifier";
+				_notifyIcon.Text = "0 unread items";
             }
         }
 
@@ -465,7 +471,10 @@ namespace GoogleReaderNotifier.WinUI
 
 		private void GoToReader()
 		{
-            System.Diagnostics.Process.Start(ConfigurationManager.AppSettings["GoogleReaderUrl"]);
+			if (_browserPath == "")
+				System.Diagnostics.Process.Start(ConfigurationSettings.AppSettings["GoogleReaderUrl"]);
+			else
+				System.Diagnostics.Process.Start(_browserPath, ConfigurationSettings.AppSettings["GoogleReaderUrl"]);
 			ResetTrayIcon();
 		}
 
@@ -478,6 +487,7 @@ namespace GoogleReaderNotifier.WinUI
 			_showCountTooltip = prefs.ShowCountTooltip;
 			_animatePopup = prefs.AnimatePopup;
 			_tagFilter = prefs.FilterTags;
+			_browserPath = prefs.BrowserPath;
 			_username = prefs.Username;
 			_password = prefs.Password;
 
@@ -485,7 +495,7 @@ namespace GoogleReaderNotifier.WinUI
 
 			if (!_showCountTooltip)
 			{
-                _notifyIcon.Text = ConfigurationManager.AppSettings["NotifyIconTitle"];
+                _notifyIcon.Text = ConfigurationSettings.AppSettings["NotifyIconTitle"];
 			}
 			
 			if ((_username.Trim().Length == 0) || (_password.Trim().Length == 0))

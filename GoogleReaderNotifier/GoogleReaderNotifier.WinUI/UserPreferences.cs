@@ -32,6 +32,20 @@ namespace GoogleReaderNotifier.WinUI
             set { _filterTags = value; }
         }
 
+		private string _browserName;
+		public string BrowserName
+		{
+			get { return (_browserName == null ? "Default" : _browserName); }
+			set { _browserName = value; }
+		}
+
+		private string _browserPath;
+		public string BrowserPath
+		{
+			get { return (_browserPath == null ? string.Empty : _browserPath); }
+			set { _browserPath = value; }
+		}
+
 		private bool _showCountTooltip = true;
 		public bool ShowCountTooltip
 		{
