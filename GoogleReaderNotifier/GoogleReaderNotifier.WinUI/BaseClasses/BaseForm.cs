@@ -32,7 +32,7 @@ namespace GoogleReaderNotifier.WinUI.BaseClasses
 		//private int windowHeight;
 
 		private Form hiddenForm = null;
-		//private Bitmap bmpIcon = null;
+		private Bitmap bmpIcon = null;
 		private Point mousePosition;
 		private Rectangle rectTitleArea;
 		private Rectangle rectBody;
@@ -511,7 +511,7 @@ namespace GoogleReaderNotifier.WinUI.BaseClasses
 			GraphicsPath gpTitlePath, gpRegion;
 			Rectangle rectTopArea, rectBottomArea;
 			Rectangle rectLeftCorner, rectRightCorner;
-			Rectangle rectTitleBar/*, rectTitleIcon*/;
+			Rectangle rectTitleBar, rectTitleIcon;
 			StringFormat sf;
 			SizeF sizeTitleText;
 			Size sizeTitleBar, sizeTitleBody;
@@ -645,27 +645,26 @@ namespace GoogleReaderNotifier.WinUI.BaseClasses
 
 			#region Draw the Application icon
 
-            // commented out because it generated an unreachable code warning
-            //if (this.Icon != null && 1 == 2)
-            //{
-            //    if (this.bmpIcon == null)
-            //    {
-            //        bmpIcon = this.Icon.ToBitmap();
-            //    }
+			if (this.Icon != null && 1 == 2)
+			{
+				if (this.bmpIcon == null)
+				{
+					bmpIcon = this.Icon.ToBitmap();
+				}
 
-            //    rectTitleIcon = new Rectangle(0, 0, 0, 0);
-            //    rectTitleIcon.X = edgeRadius / 2 + padding;
-            //    rectTitleIcon.Y = Convert.ToInt32((rectTitleBar.Height - sizeTitleText.Height) / 2);
-            //    rectTitleIcon.Width = 16;
-            //    rectTitleIcon.Height = 16;
+				rectTitleIcon = new Rectangle(0, 0, 0, 0);
+				rectTitleIcon.X = edgeRadius / 2 + padding;
+				rectTitleIcon.Y = Convert.ToInt32((rectTitleBar.Height - sizeTitleText.Height) / 2);
+				rectTitleIcon.Width = 16;
+				rectTitleIcon.Height = 16;
 
-            //    g.SmoothingMode = SmoothingMode.HighQuality;
-            //    g.DrawImage(bmpIcon, rectTitleIcon, 0, 0, 32,32, GraphicsUnit.Pixel);
-            //    g.SmoothingMode = SmoothingMode.None;
+				g.SmoothingMode = SmoothingMode.HighQuality;
+				g.DrawImage(bmpIcon, rectTitleIcon, 0, 0, 32,32, GraphicsUnit.Pixel);
+				g.SmoothingMode = SmoothingMode.None;
 
-            //    // Compensate for the space taken by the icon image
-            //    rectTitleArea.X = rectTitleArea.X  + 16 + padding;
-            //}
+				// Compensate for the space taken by the icon image
+				rectTitleArea.X = rectTitleArea.X  + 16 + padding;
+			}
 
 			#endregion
 

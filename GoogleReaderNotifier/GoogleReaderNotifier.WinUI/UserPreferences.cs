@@ -2,8 +2,6 @@ using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace GoogleReaderNotifier.WinUI
 {
@@ -11,28 +9,41 @@ namespace GoogleReaderNotifier.WinUI
 	/// Summary description for UserPreferences.
 	/// </summary>
 	[XmlRoot("userPreferences")]
-    public class UserPreferences
+	public class UserPreferences
 	{
 		public UserPreferences()
 		{
-            _notificationAudioFilePath = "";
 		}
 
-        private int _timerMinutes;
+		private int _timerMinutes;
 		public int TimerMinutes
 		{
 			get{return (_timerMinutes == 0 ? 20 : _timerMinutes); }
 			set{_timerMinutes = value;}
 		}
 
-        private List<string> _filterTags;
-        public List<string> FilterTags
+		private string _filterLabels;
+		public string FilterLabels
+		{
+			get{return (_filterLabels == null ? string.Empty : _filterLabels);}
+			set{_filterLabels = value;}
+		}
+
+        private string _browserName;
+        public string BrowserName
         {
-            get { return _filterTags; }
-            set { _filterTags = value; }
+            get { return (_browserName == null ? "Default" : _browserName); }
+            set { _browserName = value; }
         }
 
-		private bool _showCountTooltip = true;
+        private string _browserPath;
+        public string BrowserPath
+        {
+            get { return (_browserPath == null ? string.Empty : _browserPath); }
+            set { _browserPath = value; }
+        }
+
+        private bool _showCountTooltip = true;
 		public bool ShowCountTooltip
 		{
 			get{return _showCountTooltip;}
@@ -80,18 +91,5 @@ namespace GoogleReaderNotifier.WinUI
 			set{_password = value;}
 		}
 
-        [OptionalField(VersionAdded = 2)]
-        private string _notificationAudioFilePath;        
-        public string NotificationAudioFilePath
-        {
-            get { return _notificationAudioFilePath; }
-            set { _notificationAudioFilePath = value; }
-        }
-
-        [XmlIgnore()]
-        public bool HasNotificationAudioFilePath
-        {
-            get { return _notificationAudioFilePath != string.Empty; }
-        }
 	}
 }

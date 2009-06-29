@@ -310,14 +310,6 @@ namespace GoogleReaderNotifier.WinUI
 			}
 		}
 
-        protected override bool ShowWithoutActivation
-        {
-            get
-            {
-                return true;
-            }
-        }
-
 		#endregion
 
 		#region TaskbarNotifier Public Methods
@@ -367,7 +359,6 @@ namespace GoogleReaderNotifier.WinUI
 				nIncrementHide = BackgroundBitmap.Height;
 			}
 
-            
 			switch (taskbarState)
 			{
 				case TaskbarStates.hidden:
@@ -375,12 +366,9 @@ namespace GoogleReaderNotifier.WinUI
 					SetBounds(WorkAreaRectangle.Right-BackgroundBitmap.Width-17, WorkAreaRectangle.Bottom-1, BackgroundBitmap.Width, 0);
 					timer.Interval = nShowEvents;
 					timer.Start();
-					
-                    // We Show the popup without stealing focus
-                    // Although ShowWithoutActivation is overridden, using just Show() will still steal focus
-                    // This focus stealing problem may be related to the fact that .TopMost is also used.
+					// We Show the popup without stealing focus
 					ShowWindow(this.Handle, 4);
-                    break;
+					break;
 
 				case TaskbarStates.appearing:
 					Refresh();
@@ -415,7 +403,6 @@ namespace GoogleReaderNotifier.WinUI
 				timer.Stop();
 				taskbarState = TaskbarStates.hidden;
 				base.Hide();
-                Visible = false;
 			}
 		}
 
@@ -608,25 +595,20 @@ namespace GoogleReaderNotifier.WinUI
 			switch (taskbarState)
 			{
 				case TaskbarStates.appearing:
-                    if (Height < BackgroundBitmap.Height)
-                    {
-                        SetBounds(Left, Top - nIncrementShow, Width, Height + nIncrementShow);
-                        Opacity = ((Double)Height / BackgroundBitmap.Height);
-                    }
-                    else
-                    {
-                        timer.Stop();
-                        Opacity = 1;
-                        Height = BackgroundBitmap.Height;
-                        timer.Interval = nVisibleEvents;
-                        taskbarState = TaskbarStates.visible;
-                        timer.Start();
-                    }
+					if (Height < BackgroundBitmap.Height)
+						SetBounds(Left, Top-nIncrementShow ,Width, Height + nIncrementShow);
+					else
+					{
+						timer.Stop();
+						Height = BackgroundBitmap.Height;
+						timer.Interval = nVisibleEvents;
+						taskbarState = TaskbarStates.visible;
+						timer.Start();
+					}
 					break;
 
 				case TaskbarStates.visible:
 					timer.Stop();
-                    Opacity = 1;
 					timer.Interval = nHideEvents;
 					// Added Rev 002
 					if ((bKeepVisibleOnMouseOver && !bIsMouseOverPopup ) || (!bKeepVisibleOnMouseOver))
@@ -645,15 +627,10 @@ namespace GoogleReaderNotifier.WinUI
 					} 
 					else 
 					{
-                        if (Top < WorkAreaRectangle.Bottom)
-                        {
-                            SetBounds(Left, Top + nIncrementHide, Width, Height - nIncrementHide);
-                            Opacity = ((Double)Height / BackgroundBitmap.Height);
-                        }
-                        else
-                        {
-                            Hide();
-                        }
+						if (Top < WorkAreaRectangle.Bottom)
+							SetBounds(Left, Top + nIncrementHide, Width, Height - nIncrementHide);
+						else
+							Hide();
 					}
 					break;
 			}
