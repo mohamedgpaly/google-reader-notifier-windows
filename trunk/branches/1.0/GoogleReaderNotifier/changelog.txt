@@ -1,0 +1,60 @@
+-------
+ 1.0.8  - June 26 2009
+-------
+
+-Fix: Link in popup notification always opened in default browser, even if another browser to use was specified in settings.
+
+-----------
+ 1.0.8beta2  - June 12 2009
+-----------
+
+-Fix: Potential fix for some login issue
+-Change: maybe a bit faster login check
+
+-----------
+ 1.0.8beta  - June 12 2009
+-----------
+
+-Feature: Added choice between installed browsers (for "Go to Reader")
+
+-------
+ 1.0.7c - April 10 2009
+-------
+
+-Fix: Google changed their system again. 
+-Change: Pointed the Help link in About dialog to go to http://code.google.com/p/reader-notifier-mod/w/list
+
+-------
+ 1.0.7b - March 23 2009
+-------
+
+-possibleFix: installer requires latest .NET (can't test though. hope it works)
+
+-------
+ 1.0.7a - July 29 2008
+-------
+
+-Fix: timer should work now
+
+-------
+ 1.0.7 - July 08 2008
+-------
+
+- Change tooltip to notify "0 unread items" when there are no new items
+- Fix: the timer shouldn't stop when connection failed
+- Fix: exception when not connected to the internet
+- Added error message when not connected to the internet
+- Saving settings now works when error present (though the window won't colse)
+
+-------
+ 1.0.6
+-------
+- Fixed authentication check
+- Installation Requires .NET 3.5
+
+---------------
+ SVN REV 10-12
+---------------
+- Added check for valid login when settings changed.
+- Added check for settings on app startup.
+- Added an option "Start With Windows"
