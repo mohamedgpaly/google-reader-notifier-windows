@@ -96,7 +96,7 @@ namespace GoogleReaderNotifier.WinUI
 
 		private static string PreferencesFileName
 		{
-			get{ return ApplicationPath + ConfigurationManager.AppSettings["PreferencesFileName"];} 
+			get { return ApplicationPath + ConfigurationSettings.AppSettings["PreferencesFileName"]; } 
 		}
 
         private static string ApplicationPath

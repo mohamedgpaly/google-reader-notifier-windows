@@ -30,24 +30,30 @@ namespace GoogleReaderNotifier.ReaderAPI
 
         // https://www.google.com/reader/atom/user/-/state/com.google/reading-list // get full feed of items
         
-		public bool Login(string username, string password, string errorMessage)
+		public string Login(string username, string password)
 		{
-            bool result;
+			_loggedIn = false;
             
-            errorMessage = "";
-
 			HttpWebRequest req = CreateRequest("https://www.google.com/accounts/ServiceLoginAuth");
-            
-            PostLoginForm(req, String.Format("Email={0}&Passwd={1}&service=reader&continue=https://www.google.com/reader&nui=1", username, password));
 
-            result = GetResponseString(req).IndexOf("http://www.google.com.au/accounts/SetSID?") != -1;
-            
-            _loggedIn = result;
+			string exc = PostLoginForm(req, String.Format("Email={0}&Passwd={1}&continue=http://www.google.com/", Uri.EscapeDataString(username), Uri.EscapeDataString(password)));
 
-            if(!result)
-              errorMessage = "AUTH_ERROR";
+			if (exc.IndexOf("System.Net.WebException") != -1) return "CONNECT_ERROR";
+			
+			try
+			{
+				//_helper = GetResponseString(req);
+				_loggedIn = GetResponseString(req).IndexOf("error") == -1;
+			}
+			catch 
+			{
+				_loggedIn = false;
+			}
 
-            return result;
+			if (!_loggedIn)
+				return "AUTH_ERROR";
+			else
+				return string.Empty;
         }
 
         private delegate string LocateUnreadItemIdentifierDelegate(string identifierSource);
@@ -68,7 +74,7 @@ namespace GoogleReaderNotifier.ReaderAPI
             
             return CollectUnreadItems(unreadFeeds, null, null);
         }
-
+		
         public bool CollectUnreadTags(UnreadItemCollection unreadTags, List<string> tagFilterList)
         {
             System.Diagnostics.Debug.Assert(unreadTags != null, "unreadTags must be assigned.");
@@ -88,7 +94,7 @@ namespace GoogleReaderNotifier.ReaderAPI
             XmlDocument xdoc;
             string identifier;
 
-            xdoc = this.GetAllUnreadCountsXMLDocument();
+            xdoc = this.GetTagListXMLDocument();
 
             tags.Clear();
 
@@ -171,7 +177,18 @@ namespace GoogleReaderNotifier.ReaderAPI
 			return xdoc;
 		}
 
-        #endregion 
+		private XmlDocument GetTagListXMLDocument()
+		{
+			string url = "https://www.google.com/reader/api/0/tag/list";
+			string theXml = GetResponseString(CreateRequest(url));
+
+			XmlDocument xdoc = new XmlDocument();
+			xdoc.LoadXml(theXml);
+
+			return xdoc;
+		}
+
+		#endregion 
 
 		#region HTTP Functions
 
@@ -199,18 +216,27 @@ namespace GoogleReaderNotifier.ReaderAPI
 			return responseString;
 		}
 
-		private void PostLoginForm(HttpWebRequest req, string p)
+		private string PostLoginForm(HttpWebRequest req, string p)
 		{
+			string exc = string.Empty;
 			req.ContentType = "application/x-www-form-urlencoded";
 			req.Method = "POST";
 			//req.Referer = _currentURL;
 			byte[] b = Encoding.UTF8.GetBytes(p);
 			req.ContentLength = b.Length;
-			using (Stream s = req.GetRequestStream())
+			try
 			{
-				s.Write(b, 0, b.Length);
-				s.Close();
+				using (Stream s = req.GetRequestStream())
+				{
+					s.Write(b, 0, b.Length);
+					s.Close();
+				}
 			}
+			catch (Exception ex)
+			{
+				exc = ex.ToString();
+			}
+			return exc;
 		}
 
 		private HttpWebRequest CreateRequest(string url)
