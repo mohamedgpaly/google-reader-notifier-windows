@@ -21,18 +21,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1F312C987D3A5E32E489E4C8479DD88B"
+        "OwnerKey" = "8:_A38919AE1ED94DDC8EF4024E5BCBBC84"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A38919AE1ED94DDC8EF4024E5BCBBC84"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B7D52C78A9A6E65CD0F07C63497BE2D4"
-        "OwnerKey" = "8:_A38919AE1ED94DDC8EF4024E5BCBBC84"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A38919AE1ED94DDC8EF4024E5BCBBC84"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,7 +40,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B7D52C78A9A6E65CD0F07C63497BE2D4"
+        "OwnerKey" = "8:_1F312C987D3A5E32E489E4C8479DD88B"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -169,14 +169,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B7D52C78A9A6E65CD0F07C63497BE2D4"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1F312C987D3A5E32E489E4C8479DD88B"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GoogleReaderNotifier.ReaderAPI, Version=1.1.0.39075, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:GoogleReaderNotifier.ReaderAPI, Version=1.1.0.27184, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B7D52C78A9A6E65CD0F07C63497BE2D4"
+                    "_1F312C987D3A5E32E489E4C8479DD88B"
                     {
                     "Name" = "8:GoogleReaderNotifier.ReaderAPI.dll"
                     "Attributes" = "3:512"
@@ -267,14 +267,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Google Reader Notifier"
-        "ProductCode" = "8:{7740AF3D-C54B-4716-A387-75524455DD5B}"
-        "PackageCode" = "8:{34577A3C-B60C-42CD-85BC-185B4454EDE0}"
+        "ProductCode" = "8:{99F6DF88-3911-42A1-8EFC-E184465C892C}"
+        "PackageCode" = "8:{F5443949-A594-4750-A34D-C7D78459B54D}"
         "UpgradeCode" = "8:{E6871043-1449-472D-A828-7644296B9498}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.0"
+        "ProductVersion" = "8:1.1.1"
         "Manufacturer" = "8:BrainDotty"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.braindotty.com"
@@ -802,7 +802,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A38919AE1ED94DDC8EF4024E5BCBBC84"
             {
-            "SourcePath" = "8:..\\GoogleReaderNotifier.WinUI\\obj\\Debug\\GoogleReaderNotifier.exe"
+            "SourcePath" = "8:..\\GoogleReaderNotifier.WinUI\\obj\\Release\\GoogleReaderNotifier.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F111452C1D5D4DB9A35ACB7DDC1751D5"

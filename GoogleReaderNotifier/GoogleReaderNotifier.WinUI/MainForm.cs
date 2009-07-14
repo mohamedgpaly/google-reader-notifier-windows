@@ -6,7 +6,7 @@ using System.Configuration;
 using System.Resources;
 using System.Windows.Forms;
 using System.Collections.Generic;
-
+using Snarl;
 using GoogleReaderNotifier.ReaderAPI.Data;
 using GoogleReaderNotifier.ReaderAPI;
 
@@ -38,6 +38,10 @@ namespace GoogleReaderNotifier.WinUI
 		private UnreadItemCollection _currentUnreadItems = null;
 		private TaskbarNotifier _trayNotifier;
         private System.Timers.Timer _checkForUpdatesTimer;
+
+        private static IntPtr snarlMsgWindowHandle = IntPtr.Zero;
+        private int SNARL_GLOBAL_MESSAGE;
+        private string iconPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\App.ico";
 		
 
 		public MainForm()
@@ -46,6 +50,17 @@ namespace GoogleReaderNotifier.WinUI
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+
+            if (snarlMsgWindowHandle == IntPtr.Zero)
+            {
+                snarlMsgWindowHandle = this.Handle;
+            }
+            this.SNARL_GLOBAL_MESSAGE = Snarl.SnarlConnector.GetGlobalMsg();
+
+
+            SnarlConnector.RegisterConfig(snarlMsgWindowHandle, "GRaiN", Snarl.WindowsMessage.WM_USER + 16, iconPath);
+            SnarlConnector.RegisterAlert("GRaiN", "New items");
+
 
 			//
 			// TODO: Add any constructor code after InitializeComponent call
@@ -58,6 +73,11 @@ namespace GoogleReaderNotifier.WinUI
             // was manually triggered from the menu option, which causes it to fire in the forms thread.
             _checkForUpdatesTimer.SynchronizingObject = this;
 		}
+
+         ~MainForm()
+        {
+            SnarlConnector.RevokeConfig(snarlMsgWindowHandle);
+        }
 
 		#region Dispose()
 
@@ -100,7 +120,7 @@ namespace GoogleReaderNotifier.WinUI
             // 
             this._notifyIcon.ContextMenu = this._contextMenu;
             this._notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("_notifyIcon.Icon")));
-            this._notifyIcon.Text = "Google Reader Notifier";
+            this._notifyIcon.Text = "GRaiN - Google Reader Notifier";
             this._notifyIcon.Visible = true;
             this._notifyIcon.DoubleClick += new System.EventHandler(this.HandleNotifyIconDoubleClicked);
             // 
@@ -393,7 +413,14 @@ namespace GoogleReaderNotifier.WinUI
 
                     if (_animatePopup)
                     {
-                        this.ShowTrayNotification(displayInformation);
+                        if (SnarlConnector.GetSnarlWindow() != IntPtr.Zero)
+                        {
+                            Snarl.SnarlConnector.ShowMessageEx("New items", "New items", displayInformation, 15, iconPath, snarlMsgWindowHandle, Snarl.WindowsMessage.WM_USER + 17, "");
+                        }
+                        else
+                        {
+                            this.ShowTrayNotification(displayInformation);
+                        }
                     }
                 }
 
@@ -466,8 +493,39 @@ namespace GoogleReaderNotifier.WinUI
 			StartupHelper.StartWithWindows(prefs.StartAtWindowsStartup);
 
 			_notifyIcon.Visible = false;
+            SnarlConnector.RevokeConfig(snarlMsgWindowHandle);
 			Application.Exit();
 		}
+
+                protected override void WndProc(ref Message m)
+        {
+            // we gonna take care here if Snarl is (re)started while GRaiN has been running already
+            if (m.Msg == this.SNARL_GLOBAL_MESSAGE)
+            {
+                if ((int)m.WParam == Snarl.SnarlConnector.SNARL_LAUNCHED)
+                {
+                    Snarl.SnarlConnector.GetSnarlWindow(true);
+
+                    SnarlConnector.RegisterConfig(snarlMsgWindowHandle, "GRaiN", Snarl.WindowsMessage.WM_USER + 58, iconPath);
+                    SnarlConnector.RegisterAlert("GRaiN", "New items");
+
+                }
+            }
+
+            // here we can react on clicks the user makes on SNarl popups
+            if ((int)m.WParam == Snarl.SnarlConnector.SNARL_NOTIFICATION_CLICKED)
+            {
+                // clicked with right mouse button
+                GoToReader();
+            }
+
+            if ((int)m.WParam == Snarl.SnarlConnector.SNARL_NOTIFICATION_ACK)
+            {
+                // clicked with left mousebutton
+                GoToReader();
+            }
+            base.WndProc(ref m);
+        }
 
 		private void GoToReader()
 		{
