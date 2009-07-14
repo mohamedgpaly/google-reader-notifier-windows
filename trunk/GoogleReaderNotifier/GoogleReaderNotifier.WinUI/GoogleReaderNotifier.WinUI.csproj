@@ -1,7 +1,7 @@
 ﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2DB200C1-56AD-4198-995B-B8FB8EB989BE}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -141,6 +141,13 @@
     <Compile Include="PreferencesHelper.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Snarl\M_RESULT.cs" />
+    <Compile Include="Snarl\SnarlConnector.cs" />
+    <Compile Include="Snarl\SnarlException.cs" />
+    <Compile Include="Snarl\SNARLSTRUCT.cs" />
+    <Compile Include="Snarl\SNARLSTRUCTEX.cs" />
+    <Compile Include="Snarl\SNARL_COMMAND.cs" />
+    <Compile Include="Snarl\WindowsMessage.cs" />
     <Compile Include="StartupHelper.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -96,7 +96,31 @@ namespace GoogleReaderNotifier.WinUI
 
 		private static string PreferencesFileName
 		{
-			get { return ApplicationPath + ConfigurationSettings.AppSettings["PreferencesFileName"]; } 
+            get
+            {
+
+                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                appDataPath = appDataPath + "\\GRaiN\\GoogleReader\\";
+                if (!Directory.Exists(appDataPath))
+                {
+                    Directory.CreateDirectory(appDataPath);
+                }
+				if (File.Exists(ConfigurationSettings.AppSettings["PreferencesFileName"]) && !File.Exists(appDataPath + "GoogleReaderSettings.xml"))
+				{
+					File.Copy(ConfigurationSettings.AppSettings["PreferencesFileName"], appDataPath + "GoogleReaderSettings.xml");
+					try
+					{
+						File.Delete(ConfigurationSettings.AppSettings["PreferencesFileName"]);
+					}
+					catch
+					{
+						// can't delete most probably because of permission problems
+						// so we leave it there...
+					}
+				}
+                return appDataPath + "GoogleReaderSettings.xml";
+
+            }
 		}
 
         private static string ApplicationPath

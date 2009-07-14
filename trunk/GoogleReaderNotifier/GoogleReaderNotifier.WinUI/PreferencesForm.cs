@@ -416,7 +416,7 @@ namespace GoogleReaderNotifier.WinUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsResizable = false;
             this.Name = "PreferencesForm";
-            this.Text = "Google Reader Notifier Preferences";
+            this.Text = "GRaiN - Google Reader Notifier Preferences";
             this.Load += new System.EventHandler(this.PreferencesForm_Load);
             this._groupBox1.ResumeLayout(false);
             this._groupBox2.ResumeLayout(false);
@@ -440,12 +440,12 @@ namespace GoogleReaderNotifier.WinUI
             this.Cursor = Cursors.WaitCursor;
             try
             {
-                this.SynchroniseTags();
-
 			    this.LoadSettings();
 
                 this.ValidateForm();
-            }
+				
+				this.SynchroniseTags();
+			}
             finally
             {
                 this.Cursor = savedCursor;
@@ -479,7 +479,7 @@ namespace GoogleReaderNotifier.WinUI
 
 		private void HandleHelpLinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
-			System.Diagnostics.Process.Start("http://code.google.com/p/reader-notifier-mod/w/list");
+			System.Diagnostics.Process.Start("http://code.google.com/p/google-reader-notifier-windows/wiki/Help");
 		}
 
         private void SynchroniseTags()
