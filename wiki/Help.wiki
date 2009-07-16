@@ -53,7 +53,7 @@ if you changed login information, click OK to close the Preferences window, then
 
 ==Notification Audio File==
 
-Choose a WAV file to play when there's new Items. 
+    Since version 1.1.1: Choose a WAV file to play when there's new Items. 
 
 ==Google Account Authentication==
 
