@@ -1,52 +1,70 @@
 #summary Help with Google Reader Notifier
 #labels Featured
-Updated for 1.0.8 release
+Updated for 1.0.8 release<br>
+Partially updated fot 1.1.1
 
-==Google Reader Notifier Help==
+<font size=4>
+*Google Reader Notifier Help*
+</font>
+
+<font size=3>
+*Table Of Contents*
+</font>
+<wiki:toc max_depth="4" />
 <font size=3>
 Google Reader Notifier is a Windows based system tray application that checks Google Reader for new items on a periodic basis. The application is set by default to run at startup.
 
-*Reader Notifier Preferences Screen*<br>
-http://yoni-zaf.appspot.com/images/preferences1.0.8.png
+=Reader Notifier Preferences Screen=
+<br>http://yoni-zaf.appspot.com/images/preferences.jpg
 
-*Check for new items*
+==Check for new items==
 
     This menu option lets you select how often the notifier will check for new updates. If you have a smaller number of subscriptions, it may be useful to check more often. For a very large number of subscriptions, you will be notified constantly on new updates. It may be helpful to use the label filter in this case.
 
     You can manually trigger checking for new items by right-clicking on the icon and choosing Check Now:<br>
     http://yoni-zaf.appspot.com/images/menu.png
 
-*Only display items with label*
+==Only display items with label==
 
-    This textbox allows you to put a space delimited list of labels (folders, tags) that the notifier will filter by. If you have items in a folder called “favorites”, then putting favorites in this text box will make the notifier only alert you when there are updates to subscriptions in that folder. You could also put multiple folders by putting a space between them.
+    version *1.0.8 and earlier*: This textbox allows you to put a space delimited list of labels (folders, tags) that the notifier will filter by. If you have items in a folder called “favorites”, then putting favorites in this text box will make the notifier only alert you when there are updates to subscriptions in that folder. You could also put multiple folders by putting a space between them.
 
-*Show count in Tooltip*
+    version *1.1.1 and later*: the textbox was replaced by an automatically generated list of lables. just choose the labels you want from the list, and it will only show items with that label. <br>
+if you changed login information, click OK to close the Preferences window, then open it again to choose labels.
+
+==Show count in Tooltip==
 
     When you hold your mouse over the tray icon, the unread count is normally displayed. If you wanted to turn this off, you can uncheck the checkbox. This is turned on by default.<br>
     http://www.braindotty.com/wp-content/uploads/2006/12/WindowsLiveWriter/AnnouncingGoogleReaderNotifierforWindows_4E43/googleicon.png
 
-*Animate popup*
+==Animate popup==
 
     When notifier detects new unread items, a popup animation similar to the Google Talk new mail notification is shown. You can uncheck this box if you want to disable that popup.<br>
     http://www.braindotty.com/wp-content/uploads/2006/12/WindowsLiveWriter/AnnouncingGoogleReaderNotifierforWindows_4E43/googlereaderpopup%5B4%5D.png
 
-*Start notifier when windows starts*
+==Start notifier when windows starts==
 
     The application is set by default to run at startup. If you wanted to turn this off, you can uncheck the checkbox.
 
-*Browser to use*
+==Browser to use==
 
     If you want to open google reader in a different browser than your system default one, choose one here. The list includes every browser installed on your system. 
         your choice will affect opening reader when you:<br>1. choose "Go To Reader" from right click menu.<br>2. double-click the systray icon<br>3. click on the text in notification popup window<br>
     http://yoni-zaf.appspot.com/images/browser.png
 
-*Google Account Authentication*
+==Notification Audio File==
+
+Choose a WAV file to play when there's new Items. 
+
+==Google Account Authentication==
 
     You should enter your Google Reader account login information here. The password will be saved in an encrypted file.
 
     If you forgot to fill a field, the login failed, or you're not connected to the Internet, an error icon will show up. Hover over it to see the error details in a tooltip.<br>
     http://yoni-zaf.appspot.com/images/error.png
 
+= Snarl Support =
 
-
+Since version 1.1.1 Google Reader Notifier supports [http://www.fullphat.net/index.php Snarl] (a notification system for Windows.) You don't have to do anything. Run Snarl, run Notifier, it will be recognized automatically, and notifications will show up in snarl instead.<br>
+    
+<br><br>
 *Disclaimer: Google Reader Notifier is not in any way affiliated with Google Corp.*
