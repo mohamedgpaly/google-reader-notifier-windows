@@ -1,7 +1,7 @@
 #summary Help with Google Reader Notifier
 #labels Featured
 Updated for 1.0.8 release<br>
-Partially updated fot 1.1.1
+updated fot 1.1.1
 
 <font size=4>
 *Google Reader Notifier Help*
@@ -29,7 +29,8 @@ Google Reader Notifier is a Windows based system tray application that checks Go
     version *1.0.8 and earlier*: This textbox allows you to put a space delimited list of labels (folders, tags) that the notifier will filter by. If you have items in a folder called “favorites”, then putting favorites in this text box will make the notifier only alert you when there are updates to subscriptions in that folder. You could also put multiple folders by putting a space between them.
 
     version *1.1.1 and later*: the textbox was replaced by an automatically generated list of lables. just choose the labels you want from the list, and it will only show items with that label. <br>
-if you changed login information, click OK to close the Preferences window, then open it again to choose labels.
+if you changed login information, click OK to close the Preferences window, then open it again to choose labels.<br>
+    http://yoni-zaf.appspot.com/images/labels.png
 
 ==Show count in Tooltip==
 
@@ -65,6 +66,7 @@ if you changed login information, click OK to close the Preferences window, then
 = Snarl Support =
 
 Since version 1.1.1 Google Reader Notifier supports [http://www.fullphat.net/index.php Snarl] (a notification system for Windows.) You don't have to do anything. Run Snarl, run Notifier, it will be recognized automatically, and notifications will show up in snarl instead.<br>
+    http://yoni-zaf.appspot.com/images/snarlnotify.jpg
     
 <br><br>
 *Disclaimer: Google Reader Notifier is not in any way affiliated with Google Corp.*
