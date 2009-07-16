@@ -8,12 +8,12 @@ Partially updated fot 1.1.1
 </font>
 
 <font size=3>
+Google Reader Notifier is a Windows based system tray application that checks Google Reader for new items on a periodic basis. The application is set by default to run at startup.
+
 *Table Of Contents*
 </font>
 <wiki:toc max_depth="4" />
 <font size=3>
-Google Reader Notifier is a Windows based system tray application that checks Google Reader for new items on a periodic basis. The application is set by default to run at startup.
-
 =Reader Notifier Preferences Screen=
 <br>http://yoni-zaf.appspot.com/images/preferences.jpg
 
