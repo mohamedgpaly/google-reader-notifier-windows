@@ -2,6 +2,16 @@
 
 
 -------
+*1.1.1  - July 15 2009*
+-------
+
+  * Feature: Better handling of tags / labels. You can choose from a list now, rather than writing them yourself.
+  * Feature: Can play a  WAV file when there's new items.
+  * Feature: Added support for Snarl (notification app). If Snarl is running, notification will show in Snarl instead of the built-in popup window.
+  * Change: Settings file moved from app folder, to fix Permission issues in windows 7 (and maybe others). existing settings will be kept.
+  * Bunch of other little changes and bugfixes.
+
+-------
 *1.0.8  - June 26 2009*
 -------
 
