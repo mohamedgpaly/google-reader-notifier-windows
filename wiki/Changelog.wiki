@@ -1,5 +1,10 @@
 #summary Changelog for 1.0.* branch.
 
+------
+*1.1.2  - July 21 2009*
+------
+
+  * Fix: When changing resolution, Notifier launched Google Reader in browser. (regression in 1.1.1) 
 
 -------
 *1.1.1  - July 15 2009*
