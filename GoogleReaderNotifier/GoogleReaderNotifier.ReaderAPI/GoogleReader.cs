@@ -192,6 +192,13 @@ namespace GoogleReaderNotifier.ReaderAPI
 
 		#region HTTP Functions
 
+		public string GetResponseStrEx(String url)
+		{
+			string xstr = GetResponseString(CreateRequest(url));
+
+			return xstr;
+		}
+
 		private string GetResponseString(HttpWebRequest req)
 		{
 			string responseString = null;

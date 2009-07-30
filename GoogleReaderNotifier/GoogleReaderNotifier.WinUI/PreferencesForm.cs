@@ -23,6 +23,7 @@ namespace GoogleReaderNotifier.WinUI
 		private System.Windows.Forms.GroupBox _groupBox2;
 		private System.Windows.Forms.Label _label7;
 		private System.Windows.Forms.Label _label6;
+		private System.Windows.Forms.LinkLabel _updateLink;
 		private System.Windows.Forms.Label _label8;
 		private System.Windows.Forms.Button _okButton;
 		private System.Windows.Forms.Button _cancelButton;
@@ -46,7 +47,9 @@ namespace GoogleReaderNotifier.WinUI
         private ToolStripMenuItem checkAllToolStripMenuItem;
         private ToolStripMenuItem checkNoneToolStripMenuItem;
 		private System.Windows.Forms.ErrorProvider _errorProvider;
+		private System.Windows.Forms.ErrorProvider _updateIcon;
 		private string[] _browserPath;
+		private long _lastUpdateCheck;
 		//private System.ComponentModel.IContainer components;
 
 		public PreferencesForm()
@@ -98,13 +101,15 @@ namespace GoogleReaderNotifier.WinUI
             this._userName = new System.Windows.Forms.TextBox();
             this._label7 = new System.Windows.Forms.Label();
             this._label6 = new System.Windows.Forms.Label();
-            this._label8 = new System.Windows.Forms.Label();
+			this._updateLink = new System.Windows.Forms.LinkLabel();
+			this._label8 = new System.Windows.Forms.Label();
 			this._label9 = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
             this._helpLink = new System.Windows.Forms.LinkLabel();
             this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this._noficationAudoFilePathGroupBox = new System.Windows.Forms.GroupBox();
+			this._updateIcon = new System.Windows.Forms.ErrorProvider(this.components);
+			this._noficationAudoFilePathGroupBox = new System.Windows.Forms.GroupBox();
             this._selectNotificationAudioFilePathButton = new System.Windows.Forms.Button();
             this._notificationAudioFilePath = new System.Windows.Forms.TextBox();
             this.tagsGroupBox = new System.Windows.Forms.GroupBox();
@@ -116,7 +121,8 @@ namespace GoogleReaderNotifier.WinUI
             this._groupBox1.SuspendLayout();
             this._groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
-            this._noficationAudoFilePathGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this._updateIcon)).BeginInit();
+			this._noficationAudoFilePathGroupBox.SuspendLayout();
             this.tagsGroupBox.SuspendLayout();
             this.tagListBoxContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -124,7 +130,7 @@ namespace GoogleReaderNotifier.WinUI
             // _label1
             // 
             this._label1.BackColor = System.Drawing.Color.Transparent;
-            this._label1.Location = new System.Drawing.Point(16, 40);
+            this._label1.Location = new System.Drawing.Point(16, 42);
             this._label1.Name = "_label1";
             this._label1.Size = new System.Drawing.Size(144, 23);
             this._label1.TabIndex = 1;
@@ -149,7 +155,7 @@ namespace GoogleReaderNotifier.WinUI
             // _label2
             // 
             this._label2.BackColor = System.Drawing.Color.Transparent;
-            this._label2.Location = new System.Drawing.Point(216, 40);
+            this._label2.Location = new System.Drawing.Point(216, 42);
             this._label2.Name = "_label2";
             this._label2.Size = new System.Drawing.Size(56, 23);
             this._label2.TabIndex = 3;
@@ -307,7 +313,28 @@ namespace GoogleReaderNotifier.WinUI
             this._helpLink.Text = "Help";
             this._helpLink.VisitedLinkColor = System.Drawing.Color.Black;
             this._helpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HandleHelpLinkClicked);
-            // 
+			// 
+			// _label5
+			// 
+			this._updateLink.ActiveLinkColor = System.Drawing.Color.Black;
+			this._updateLink.LinkColor = System.Drawing.Color.Black;
+			this._updateLink.VisitedLinkColor = System.Drawing.Color.Black;
+			this._updateLink.Text = "Check for New Version";
+			this._updateLink.BackColor = System.Drawing.Color.Transparent;
+			this._updateLink.Location = new System.Drawing.Point(290, 32);
+			this._updateLink.Name = "_updateLink";
+			this._updateLink.Size = new System.Drawing.Size(120, 16);
+			this._updateLink.TabStop = true;
+			this._updateLink.TabIndex = 18;
+			this._updateLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HandleUpdateLinkClicked);
+			this._updateLink.Tag = "Check";
+			// 
+			// _errorProvider
+			// 
+			this._updateIcon.ContainerControl = this;
+			this._updateIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("green")));
+			this._updateIcon.RightToLeft = true;
+			// 
             // _errorProvider
             // 
             this._errorProvider.ContainerControl = this;
@@ -407,7 +434,8 @@ namespace GoogleReaderNotifier.WinUI
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this._okButton);
             this.Controls.Add(this._label8);
-            this.Controls.Add(this._groupBox2);
+			this.Controls.Add(this._updateLink);
+			this.Controls.Add(this._groupBox2);
             this.Controls.Add(this._groupBox1);
             this.Controls.Add(this._label2);
             this.Controls.Add(this._timerMinutes);
@@ -418,7 +446,8 @@ namespace GoogleReaderNotifier.WinUI
             this.Name = "PreferencesForm";
             this.Text = "GRaiN - Google Reader Notifier Preferences";
             this.Load += new System.EventHandler(this.PreferencesForm_Load);
-            this._groupBox1.ResumeLayout(false);
+			this.Shown += new System.EventHandler(this.PreferencesForm_Shown);
+			this._groupBox1.ResumeLayout(false);
             this._groupBox2.ResumeLayout(false);
             this._groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).EndInit();
@@ -452,6 +481,11 @@ namespace GoogleReaderNotifier.WinUI
             }
 		}
 
+		private void PreferencesForm_Shown(object sender, System.EventArgs e)
+		{
+			CheckForUpdates(_lastUpdateCheck);
+		}
+
 		private void _okButton_Click(object sender, System.EventArgs e)
 		{
             Cursor savedCursor = this.Cursor;
@@ -480,6 +514,14 @@ namespace GoogleReaderNotifier.WinUI
 		private void HandleHelpLinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
 			System.Diagnostics.Process.Start("http://code.google.com/p/google-reader-notifier-windows/wiki/Help");
+		}
+
+		private void HandleUpdateLinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		{
+			if (_updateLink.Tag.ToString() == "Check")
+				CheckForUpdates(0);
+			else
+				System.Diagnostics.Process.Start("http://code.google.com/p/reader-notifier-mod/downloads/list");
 		}
 
         private void SynchroniseTags()
@@ -525,6 +567,7 @@ namespace GoogleReaderNotifier.WinUI
 			_startWithWindows.Checked = prefs.StartAtWindowsStartup;
 			_browserList.Items.AddRange(FindBrowsers());
 			_browserList.SelectedItem = prefs.BrowserName;
+			_lastUpdateCheck = prefs.LastUpdateCheck;
 			_userName.Text = prefs.Username;
 			_password.Text = prefs.Password;
             _notificationAudioFilePath.Text = prefs.NotificationAudioFilePath;
@@ -545,6 +588,7 @@ namespace GoogleReaderNotifier.WinUI
 			prefs.StartAtWindowsStartup = _startWithWindows.Checked;
 			prefs.BrowserName = _browserList.SelectedItem.ToString();
 			prefs.BrowserPath = _browserPath[_browserList.SelectedIndex];
+			prefs.LastUpdateCheck = _lastUpdateCheck;
 			prefs.Username = _userName.Text;
 			prefs.Password = _password.Text;
             prefs.NotificationAudioFilePath = _notificationAudioFilePath.Text;
@@ -566,6 +610,10 @@ namespace GoogleReaderNotifier.WinUI
 
 		private bool ValidateForm()
 		{
+			return ValidateForm(string.Empty);
+		}
+		private bool ValidateForm(String Val)
+		{
 			bool isValid = true;
 
 			string userError = null;
@@ -584,13 +632,16 @@ namespace GoogleReaderNotifier.WinUI
 			}
 			_errorProvider.SetError(_password, passwordError);
 
-            string notificationAudioFilePathError = "";
-            if ((_notificationAudioFilePath.Text != string.Empty) && !System.IO.File.Exists(_notificationAudioFilePath.Text))
-            {
-                notificationAudioFilePathError = "File does not exist!";
-                isValid = false;
-            }
-            _errorProvider.SetError(_notificationAudioFilePath, notificationAudioFilePathError);
+			if (Val != "noAudio")
+			{
+				string notificationAudioFilePathError = "";
+				if ((_notificationAudioFilePath.Text != string.Empty) && !System.IO.File.Exists(_notificationAudioFilePath.Text))
+				{
+					notificationAudioFilePathError = "File does not exist!";
+					isValid = false;
+				}
+				_errorProvider.SetError(_notificationAudioFilePath, notificationAudioFilePathError);
+			}
 
 			if(isValid)
 			{
@@ -634,6 +685,41 @@ namespace GoogleReaderNotifier.WinUI
 				return true;            
 		}
 
+		private void CheckForUpdates(long LastChecked)
+		{
+			DateTime CurrentDate = DateTime.Now;
+			DateTime LastUpdated = new DateTime(LastChecked);
+			if (CurrentDate.Ticks > LastUpdated.AddDays(7).Ticks)
+			{
+				string UpdAvail = string.Empty;
+				string NewVerStr = reader.GetResponseStrEx("http://yoni-zaf.appspot.com/autoupdate");
+				if (NewVerStr == null) return;//Check failed
+
+				_lastUpdateCheck = CurrentDate.Ticks;//updates lastUpdateCheck in preferences, even if the user is going to click cancel.
+				UserPreferences prefs = PreferencesHelper.RetrievePreferences();
+				prefs.LastUpdateCheck = _lastUpdateCheck;
+				PreferencesHelper.SavePreferences(prefs);
+
+				int[] NewV = Array.ConvertAll(NewVerStr.Split('.'), i => Convert.ToInt32(i));
+				int[] CurV = Array.ConvertAll(Application.ProductVersion.Split('.'), i => Convert.ToInt32(i));
+				if (NewV[0] > CurV[0] || (NewV[0] == CurV[0] && NewV[1] > CurV[1]) || (NewV[0] == CurV[0] && NewV[1] == CurV[1] && NewV[2] > CurV[2]))
+				{
+					string message = "New version of GRaiN is available\nYou have:" + Application.ProductVersion + "\nNewest version:" + NewVerStr;
+					_updateLink.ActiveLinkColor = System.Drawing.Color.SeaGreen;
+					_updateLink.LinkColor = System.Drawing.Color.SeaGreen;
+					_updateLink.VisitedLinkColor = System.Drawing.Color.SeaGreen;
+					_updateLink.Text = "New version available";
+					_updateLink.Tag = "Get";
+					_updateIcon.SetError(_updateLink, message);
+				}
+				else
+				{
+					_updateLink.Text = "No Update available";
+					_updateLink.Enabled = false;
+				}
+			}
+		}
+
         private void _selectNotificationAudioFilePathButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -649,6 +735,7 @@ namespace GoogleReaderNotifier.WinUI
 
         private void refreshTagsButton_Click(object sender, EventArgs e)
         {
+			ValidateForm("noAudio");
             SynchroniseTags();
         }
 
