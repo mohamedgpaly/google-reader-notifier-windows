@@ -94,7 +94,14 @@ namespace GoogleReaderNotifier.WinUI
 			set{_password = value;}
 		}
 
-        [OptionalField(VersionAdded = 2)]
+		private long _LastUpdateCheck = 0;
+		public long LastUpdateCheck
+		{
+			get { return _LastUpdateCheck; }
+			set { _LastUpdateCheck = value; }
+		}
+		
+		[OptionalField(VersionAdded = 2)]
         private string _notificationAudioFilePath;        
         public string NotificationAudioFilePath
         {
