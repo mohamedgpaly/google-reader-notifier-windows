@@ -173,7 +173,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GoogleReaderNotifier.ReaderAPI, Version=1.1.0.27184, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:GoogleReaderNotifier.ReaderAPI, Version=1.1.2.28950, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_1F312C987D3A5E32E489E4C8479DD88B"
@@ -267,14 +267,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Google Reader Notifier"
-        "ProductCode" = "8:{99F6DF88-3911-42A1-8EFC-E184465C892C}"
-        "PackageCode" = "8:{F5443949-A594-4750-A34D-C7D78459B54D}"
+        "ProductCode" = "8:{16D6B6D8-6317-4010-9E4F-2AE65F6B00C6}"
+        "PackageCode" = "8:{8A6F96FC-ACFA-4B1C-807D-AB39689474EB}"
         "UpgradeCode" = "8:{E6871043-1449-472D-A828-7644296B9498}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.1"
+        "ProductVersion" = "8:1.1.2"
         "Manufacturer" = "8:BrainDotty"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.braindotty.com"
@@ -389,9 +389,9 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_63CCB2FD16F240BEBB1E3B00E8391455"
             {
-            "Name" = "8:Google Reader Notifier"
+            "Name" = "8:GRaiN"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:GRaiN is a notifier app for Google Reader"
             "ShowCmd" = "3:7"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
