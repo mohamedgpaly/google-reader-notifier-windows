@@ -497,8 +497,10 @@ namespace GoogleReaderNotifier.WinUI
 			Application.Exit();
 		}
 
-                protected override void WndProc(ref Message m)
+        protected override void WndProc(ref Message m)
         {
+            int newFeedItemsMessage = (int)Snarl.WindowsMessage.WM_USER;
+            newFeedItemsMessage += 17;
             // we gonna take care here if Snarl is (re)started while GRaiN has been running already
             if (m.Msg == this.SNARL_GLOBAL_MESSAGE)
             {
@@ -513,16 +515,19 @@ namespace GoogleReaderNotifier.WinUI
             }
 
             // here we can react on clicks the user makes on SNarl popups
-            if ((int)m.WParam == Snarl.SnarlConnector.SNARL_NOTIFICATION_CLICKED)
+            if (m.Msg == newFeedItemsMessage)
             {
-                // clicked with right mouse button
-                GoToReader();
-            }
+                if ((int)m.WParam == Snarl.SnarlConnector.SNARL_NOTIFICATION_CLICKED)
+                {
+                    // clicked with right mouse button
+                    GoToReader();
+                }
 
-            if ((int)m.WParam == Snarl.SnarlConnector.SNARL_NOTIFICATION_ACK)
-            {
-                // clicked with left mousebutton
-                GoToReader();
+                if ((int)m.WParam == Snarl.SnarlConnector.SNARL_NOTIFICATION_ACK)
+                {
+                    // clicked with left mousebutton
+                    GoToReader();
+                }
             }
             base.WndProc(ref m);
         }
