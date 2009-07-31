@@ -1,4 +1,5 @@
 #summary Changelog for GRaiN - Google Reader Notifier
+#labels Featured
 
 --------
 *1.1.3* - July 29 2009
