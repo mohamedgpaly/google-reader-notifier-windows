@@ -1,7 +1,7 @@
 #summary Help with Google Reader Notifier
 #labels Featured
 Updated for 1.0.8 release<br>
-updated fot 1.1.1
+Updated for 1.1.3
 
 <font size=4>
 *Google Reader Notifier Help*
@@ -15,7 +15,7 @@ Google Reader Notifier is a Windows based system tray application that checks Go
 <wiki:toc max_depth="4" />
 <font size=3>
 =Reader Notifier Preferences Screen=
-<br>http://yoni-zaf.appspot.com/images/preferences.jpg
+http://yoni-zaf.appspot.com/images/preferences1.1.3.png
 
 ==Check for new items==
 
@@ -29,8 +29,10 @@ Google Reader Notifier is a Windows based system tray application that checks Go
     version *1.0.8 and earlier*: This textbox allows you to put a space delimited list of labels (folders, tags) that the notifier will filter by. If you have items in a folder called “favorites”, then putting favorites in this text box will make the notifier only alert you when there are updates to subscriptions in that folder. You could also put multiple folders by putting a space between them.
 
     version *1.1.1 and later*: the textbox was replaced by an automatically generated list of lables. just choose the labels you want from the list, and it will only show items with that label. <br>
-if you changed login information, click OK to close the Preferences window, then open it again to choose labels.<br>
-    http://yoni-zaf.appspot.com/images/labels.png
+    A right click on the listbox will open a context menu to let you choose all labels - or none.<br>
+    http://yoni-zaf.appspot.com/images/labels.png<br>
+    if you changed login information, click OK to close the Preferences window, then open it again to choose labels.<br>
+    (*since 1.1.3:* click on Refresh button to get list of labels after changing login info . There's no need to close and reopen the Preferences window)
 
 ==Show count in Tooltip==
 
@@ -50,7 +52,7 @@ if you changed login information, click OK to close the Preferences window, then
 
     If you want to open google reader in a different browser than your system default one, choose one here. The list includes every browser installed on your system. 
         your choice will affect opening reader when you:<br>1. choose "Go To Reader" from right click menu.<br>2. double-click the systray icon<br>3. click on the text in notification popup window<br>
-    http://yoni-zaf.appspot.com/images/browser.png
+        http://yoni-zaf.appspot.com/images/browser.png
 
 ==Notification Audio File==
 
@@ -62,6 +64,15 @@ if you changed login information, click OK to close the Preferences window, then
 
     If you forgot to fill a field, the login failed, or you're not connected to the Internet, an error icon will show up. Hover over it to see the error details in a tooltip.<br>
     http://yoni-zaf.appspot.com/images/error.png
+
+==Check for New Version==
+    Since version 1.1.3 Google Reader Notifier can Check if there's new version available. Click on the 'Check for New Version' link in Preferences window, and if there's new version, the link will become green and say 'New Version Available'.
+    Hovering over the green icon will give you version details. Click on the link to go to the Download page.<br>
+    http://yoni-zaf.appspot.com/images/updates.png<br>
+    When no new version available, the link becomes gray and says 'No Update available'.
+
+    When opening Preferences window, It will check automatically once, if you didn't check for at least 7 days. 
+
 
 = Snarl Support =
 

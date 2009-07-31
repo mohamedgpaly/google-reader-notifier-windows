@@ -1,4 +1,13 @@
-#summary Changelog for 1.0.* branch.
+#summary Changelog for GRaiN - Google Reader Notifier
+#labels Featured
+
+--------
+*1.1.3* - July 29 2009
+--------
+
+  * Fix: Labels Refresh button now works when you change login info, no need to close and reopen Preferences anymore.
+  * Feature: Automatic check for new version.
+  * Change: Slight changes to Icons.
 
 ------
 *1.1.2  - July 21 2009*
@@ -12,7 +21,7 @@
 
   * Feature: Better handling of tags / labels. You can choose from a list now, rather than writing them yourself.
   * Feature: Can play a  WAV file when there's new items.
-  * Feature: Added support for Snarl (notification app). If Snarl is running, notification will show in Snarl instead of the built-in popup window.
+  * Feature: Added support for [http://www.fullphat.net/about/index.html Snarl] (notification app). If Snarl is running, notification will show in Snarl instead of the built-in popup window.
   * Change: Settings file moved from app folder, to fix Permission issues in windows 7 (and maybe others). existing settings will be kept.
   * Bunch of other little changes and bugfixes.
 
