@@ -2,6 +2,12 @@
 #labels Featured
 
 --------
+*1.1.4* - October 1 2009
+--------
+
+  * Fix: Changed login method, to fix Google login issues. Hope it helps.
+
+--------
 *1.1.3* - July 29 2009
 --------
 
