@@ -2,6 +2,13 @@
 #labels Featured
 
 --------
+*1.1.5* - January 6 2010
+--------
+
+  * Fix: exception when browser list has an invalid entry
+  * Feature: added a choice between taskbar icons for unread items.
+
+--------
 *1.1.4* - October 1 2009
 --------
 
