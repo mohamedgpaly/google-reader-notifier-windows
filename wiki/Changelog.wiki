@@ -2,6 +2,12 @@
 #labels Featured
 
 --------
+*1.1.6* - May 3 2010
+--------
+
+  * Fix: Exception when a Google Apps account exists with the same login data
+
+--------
 *1.1.5* - January 6 2010
 --------
 
