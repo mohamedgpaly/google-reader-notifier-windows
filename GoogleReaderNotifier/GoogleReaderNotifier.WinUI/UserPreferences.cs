@@ -109,6 +109,14 @@ namespace GoogleReaderNotifier.WinUI
             set { _notificationAudioFilePath = value; }
         }
 
+        private int _unreadIcon;
+        public int UnreadIcon
+        {
+            get { return (_unreadIcon); }
+            set { _unreadIcon = value; }
+        }
+
+
         [XmlIgnore()]
         public bool HasNotificationAudioFilePath
         {

@@ -34,6 +34,7 @@ namespace GoogleReaderNotifier.WinUI
 		private string _browserPath = string.Empty;
 		private string _username = string.Empty;
 		private string _password = string.Empty;
+        private string _unreadIcon = string.Empty;
 
 		private UnreadItemCollection _currentUnreadItems = null;
 		private TaskbarNotifier _trayNotifier;
@@ -424,7 +425,7 @@ namespace GoogleReaderNotifier.WinUI
                     }
                 }
 
-                _notifyIcon.Icon = new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GoogleReaderNotifier.WinUI.Images.unread.ico"));
+                _notifyIcon.Icon = new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GoogleReaderNotifier.WinUI.Images.unread"+_unreadIcon+".ico"));
                 _currentUnreadItems = unreadItems;
             }
             else
@@ -553,6 +554,8 @@ namespace GoogleReaderNotifier.WinUI
 			_browserPath = prefs.BrowserPath;
 			_username = prefs.Username;
 			_password = prefs.Password;
+            _unreadIcon = (prefs.UnreadIcon == 0) ? string.Empty : prefs.UnreadIcon.ToString();
+
 
 			StartupHelper.StartWithWindows(prefs.StartAtWindowsStartup);
 

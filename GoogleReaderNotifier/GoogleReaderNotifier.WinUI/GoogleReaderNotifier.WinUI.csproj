@@ -132,6 +132,10 @@
     <Compile Include="Encryption.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="imageCombo\ImageCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="imageCombo\ImageComboItem.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +204,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\_notifyIcon.Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="imageCombo\ImageCombo.resx">
+      <DependentUpon>ImageCombo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\unread1.ico" />
+    <EmbeddedResource Include="Images\unread2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

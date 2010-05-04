@@ -24,6 +24,7 @@ namespace GoogleReaderNotifier.WinUI
 		private System.Windows.Forms.Label _label7;
 		private System.Windows.Forms.Label _label6;
 		private System.Windows.Forms.LinkLabel _updateLink;
+		private System.Windows.Forms.LinkLabel _copyError;
 		private System.Windows.Forms.Label _label8;
 		private System.Windows.Forms.Button _okButton;
 		private System.Windows.Forms.Button _cancelButton;
@@ -36,6 +37,9 @@ namespace GoogleReaderNotifier.WinUI
 		private System.Windows.Forms.CheckBox _showCountTooltip;
 		private System.Windows.Forms.TextBox _password;
 		private System.Windows.Forms.TextBox _userName;
+        private System.Windows.Forms.Label _unreadIconlabel;
+        private System.Windows.Forms.ImageCombo _unreadIcon;
+        private System.Windows.Forms.ImageList imageList;
         private IContainer components;
         private GroupBox _noficationAudoFilePathGroupBox;
         private Button _selectNotificationAudioFilePathButton;
@@ -102,6 +106,7 @@ namespace GoogleReaderNotifier.WinUI
             this._label7 = new System.Windows.Forms.Label();
             this._label6 = new System.Windows.Forms.Label();
 			this._updateLink = new System.Windows.Forms.LinkLabel();
+			this._copyError = new System.Windows.Forms.LinkLabel();
 			this._label8 = new System.Windows.Forms.Label();
 			this._label9 = new System.Windows.Forms.Label();
             this._okButton = new System.Windows.Forms.Button();
@@ -112,6 +117,9 @@ namespace GoogleReaderNotifier.WinUI
 			this._noficationAudoFilePathGroupBox = new System.Windows.Forms.GroupBox();
             this._selectNotificationAudioFilePathButton = new System.Windows.Forms.Button();
             this._notificationAudioFilePath = new System.Windows.Forms.TextBox();
+            this._unreadIconlabel = new System.Windows.Forms.Label();
+            this._unreadIcon = new System.Windows.Forms.ImageCombo();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.tagsGroupBox = new System.Windows.Forms.GroupBox();
             this.refreshTagsButton = new System.Windows.Forms.Button();
             this.tagsListBox = new System.Windows.Forms.CheckedListBox();
@@ -169,6 +177,8 @@ namespace GoogleReaderNotifier.WinUI
 			this._groupBox1.Controls.Add(this._label9);
 			this._groupBox1.Controls.Add(this._animatePopup);
             this._groupBox1.Controls.Add(this._showCountTooltip);
+            this._groupBox1.Controls.Add(this._unreadIconlabel);
+            this._groupBox1.Controls.Add(this._unreadIcon);
             this._groupBox1.Location = new System.Drawing.Point(16, 204);
             this._groupBox1.Name = "_groupBox1";
             this._groupBox1.Size = new System.Drawing.Size(422, 87);
@@ -179,13 +189,13 @@ namespace GoogleReaderNotifier.WinUI
             // 
             this._startWithWindows.Location = new System.Drawing.Point(16, 55);
             this._startWithWindows.Name = "_startWithWindows";
-            this._startWithWindows.Size = new System.Drawing.Size(248, 24);
+            this._startWithWindows.Size = new System.Drawing.Size(200, 24);
             this._startWithWindows.TabIndex = 2;
             this._startWithWindows.Text = "start notifier when Windows starts";
 			// 
 			// _label9
 			// 
-			this._label9.Location = new System.Drawing.Point(300, 21);
+			this._label9.Location = new System.Drawing.Point(320, 10);
 			this._label9.Name = "_label7";
 			this._label9.Size = new System.Drawing.Size(90, 23);
 			this._label9.TabIndex = 1;
@@ -195,7 +205,7 @@ namespace GoogleReaderNotifier.WinUI
 			// 
 			this._browserList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this._browserList.Items.Add("Default");
-			this._browserList.Location = new System.Drawing.Point(300, 38);
+			this._browserList.Location = new System.Drawing.Point(320, 27);
 			this._browserList.Name = "_browserList";
 			this._browserList.Size = new System.Drawing.Size(90, 21);
 			this._browserList.TabIndex = 2;
@@ -204,7 +214,7 @@ namespace GoogleReaderNotifier.WinUI
             // 
             this._animatePopup.Location = new System.Drawing.Point(16, 37);
             this._animatePopup.Name = "_animatePopup";
-            this._animatePopup.Size = new System.Drawing.Size(248, 21);
+            this._animatePopup.Size = new System.Drawing.Size(200, 21);
             this._animatePopup.TabIndex = 1;
             this._animatePopup.Text = "animate popup";
             // 
@@ -225,7 +235,8 @@ namespace GoogleReaderNotifier.WinUI
             this._groupBox2.Controls.Add(this._userName);
             this._groupBox2.Controls.Add(this._label7);
             this._groupBox2.Controls.Add(this._label6);
-            this._groupBox2.Location = new System.Drawing.Point(16, 353);
+			this._groupBox2.Controls.Add(this._copyError);
+			this._groupBox2.Location = new System.Drawing.Point(16, 353);
             this._groupBox2.Name = "_groupBox2";
             this._groupBox2.Size = new System.Drawing.Size(424, 76);
             this._groupBox2.TabIndex = 11;
@@ -314,7 +325,7 @@ namespace GoogleReaderNotifier.WinUI
             this._helpLink.VisitedLinkColor = System.Drawing.Color.Black;
             this._helpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HandleHelpLinkClicked);
 			// 
-			// _label5
+			// _updateLink
 			// 
 			this._updateLink.ActiveLinkColor = System.Drawing.Color.Black;
 			this._updateLink.LinkColor = System.Drawing.Color.Black;
@@ -328,6 +339,22 @@ namespace GoogleReaderNotifier.WinUI
 			this._updateLink.TabIndex = 18;
 			this._updateLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HandleUpdateLinkClicked);
 			this._updateLink.Tag = "Check";
+			// 
+			// _copyError
+			// 
+			this._copyError.ActiveLinkColor = System.Drawing.Color.Red;
+			this._copyError.LinkColor = System.Drawing.Color.Black;
+			this._copyError.VisitedLinkColor = System.Drawing.Color.Black;
+			this._copyError.Text = "Copy Error";
+			this._copyError.BackColor = System.Drawing.Color.Transparent;
+			this._copyError.Location = new System.Drawing.Point(340, 26);
+			this._copyError.Name = "_copyError";
+			this._copyError.Size = new System.Drawing.Size(120, 16);
+			this._copyError.TabStop = true;
+			this._copyError.TabIndex = 99;
+			this._copyError.Visible = false;
+			this._copyError.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.HandleCopyErrorClicked);
+			this._copyError.Tag = "Copy";
 			// 
 			// _errorProvider
 			// 
@@ -369,6 +396,36 @@ namespace GoogleReaderNotifier.WinUI
             this._notificationAudioFilePath.Name = "_notificationAudioFilePath";
             this._notificationAudioFilePath.Size = new System.Drawing.Size(371, 20);
             this._notificationAudioFilePath.TabIndex = 5;
+            // 
+            // imageList
+            // 
+            this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList.Images.Add(new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GoogleReaderNotifier.WinUI.Images.unread.ico")));
+            this.imageList.Images.Add(new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GoogleReaderNotifier.WinUI.Images.unread1.ico")));
+            this.imageList.Images.Add(new Icon(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("GoogleReaderNotifier.WinUI.Images.unread2.ico")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // _unreadIconlabel
+            // 
+            this._unreadIconlabel.Location = new System.Drawing.Point(270, 58);
+            this._unreadIconlabel.Name = "_label7";
+            this._unreadIconlabel.Size = new System.Drawing.Size(100, 23);
+            this._unreadIconlabel.TabIndex = 1;
+            this._unreadIconlabel.Text = "Unread Items Icon";
+            // 
+            // _unreadIcon
+            // 
+            this._unreadIcon.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this._unreadIcon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._unreadIcon.ImageList = this.imageList;
+            this._unreadIcon.Location = new System.Drawing.Point(370, 55);
+            this._unreadIcon.Name = "imageComboList";
+            this._unreadIcon.Size = new System.Drawing.Size(40, 22);
+            this._unreadIcon.TabIndex = 90;
+            _unreadIcon.Items.Add(new ImageComboItem("", 0));
+            _unreadIcon.Items.Add(new ImageComboItem("", 1));
+            _unreadIcon.Items.Add(new ImageComboItem("", 2));
             // 
             // tagsGroupBox
             // 
@@ -521,10 +578,17 @@ namespace GoogleReaderNotifier.WinUI
 			if (_updateLink.Tag.ToString() == "Check")
 				CheckForUpdates(0);
 			else
-				System.Diagnostics.Process.Start("http://code.google.com/p/reader-notifier-mod/downloads/list");
+				System.Diagnostics.Process.Start("http://code.google.com/p/google-reader-notifier-windows/downloads/list");
 		}
 
-        private void SynchroniseTags()
+		private void HandleCopyErrorClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+		{
+			if (reader.LoginError != string.Empty)
+				Clipboard.SetText(reader.LoginError);
+			this._copyError.Visible = false;
+		}
+		
+		private void SynchroniseTags()
         {
             List<string> tags = new List<string>();
             List<string> currentCheckedTags = new List<string>();
@@ -571,6 +635,7 @@ namespace GoogleReaderNotifier.WinUI
 			_userName.Text = prefs.Username;
 			_password.Text = prefs.Password;
             _notificationAudioFilePath.Text = prefs.NotificationAudioFilePath;
+            _unreadIcon.SelectedIndex = prefs.UnreadIcon;
 
             foreach (string tag in prefs.FilterTags)
             {
@@ -592,6 +657,7 @@ namespace GoogleReaderNotifier.WinUI
 			prefs.Username = _userName.Text;
 			prefs.Password = _password.Text;
             prefs.NotificationAudioFilePath = _notificationAudioFilePath.Text;
+            prefs.UnreadIcon = _unreadIcon.SelectedIndex;
 
             if (prefs.FilterTags == null)
             {
@@ -655,20 +721,28 @@ namespace GoogleReaderNotifier.WinUI
 		{
 			//this._browserList.Items.Add("Default");
 			RegistryKey browserKeys;
-			//on 64bit the browsers are in a different location
-			browserKeys = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Clients\StartMenuInternet");
-			if (browserKeys == null)
-				browserKeys = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Clients\StartMenuInternet");
-			string[] browserNames = browserKeys.GetSubKeyNames();
+            browserKeys = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Clients\StartMenuInternet");
+            //on 64bit the browsers are in a different location
+            if (browserKeys == null)
+                browserKeys = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Clients\StartMenuInternet");
+            string[] browserNames = browserKeys.GetSubKeyNames();
 			string[] browserName = new string[browserNames.Length];
 			_browserPath = new string[browserNames.Length + 1];
 			for (int i = 0; i < browserNames.Length; i++)
 			{
-				RegistryKey browserKey = browserKeys.OpenSubKey(browserNames[i]);
-				browserName[i] = (string)browserKey.GetValue(null);
-				RegistryKey browserKeyPath = browserKey.OpenSubKey(@"shell\open\command");
-				_browserPath[i + 1] = (string)browserKeyPath.GetValue(null);
-			}
+                try
+                {
+                    RegistryKey browserKey = browserKeys.OpenSubKey(browserNames[i]);
+                    browserName[i] = (string)browserKey.GetValue(null, "");
+                    RegistryKey browserKeyPath = browserKey.OpenSubKey(@"shell\open\command");
+                    _browserPath[i + 1] = (string)browserKeyPath.GetValue(null, "");
+                }
+                catch
+                {
+                    browserName[i] = "";
+                    _browserPath[i + 1] = "";
+                }
+            }
 			return browserName;
 		}
 
@@ -679,10 +753,19 @@ namespace GoogleReaderNotifier.WinUI
 			if (result != string.Empty)
 			{
 				_errorProvider.SetError(_userName, result == "CONNECT_ERROR" ? "Cannot Connect to the Internet!" : "Login to Google Failed!");
+#if DEBUG
+				if (reader.LoginError != string.Empty)
+				{
+					_copyError.Visible = true;
+				}
+#endif
 				return false;
 			}
 			else
-				return true;            
+			{
+				_copyError.Visible = false;
+				return true;
+			}
 		}
 
 		private void CheckForUpdates(long LastChecked)
