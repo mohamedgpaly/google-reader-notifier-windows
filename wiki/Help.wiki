@@ -22,7 +22,7 @@ http://yoni-zaf.appspot.com/images/preferences1.1.3.png
     This menu option lets you select how often the notifier will check for new updates. If you have a smaller number of subscriptions, it may be useful to check more often. For a very large number of subscriptions, you will be notified constantly on new updates. It may be helpful to use the label filter in this case.
 
     You can manually trigger checking for new items by right-clicking on the icon and choosing Check Now:<br>
-    http://yoni-zaf.appspot.com/images/menu.png
+    http://yoni-zaf.appspot.com/images/menu-checknow.png
 
 ==Only display items with label==
 
@@ -37,12 +37,12 @@ http://yoni-zaf.appspot.com/images/preferences1.1.3.png
 ==Show count in Tooltip==
 
     When you hold your mouse over the tray icon, the unread count is normally displayed. If you wanted to turn this off, you can uncheck the checkbox. This is turned on by default.<br>
-    http://www.braindotty.com/wp-content/uploads/2006/12/WindowsLiveWriter/AnnouncingGoogleReaderNotifierforWindows_4E43/googleicon.png
+    http://yoni-zaf.appspot.com/images/tooltip.png
 
 ==Animate popup==
 
     When notifier detects new unread items, a popup animation similar to the Google Talk new mail notification is shown. You can uncheck this box if you want to disable that popup.<br>
-    http://www.braindotty.com/wp-content/uploads/2006/12/WindowsLiveWriter/AnnouncingGoogleReaderNotifierforWindows_4E43/googlereaderpopup%5B4%5D.png
+    http://yoni-zaf.appspot.com/images/popup.png
 
 ==Start notifier when windows starts==
 
