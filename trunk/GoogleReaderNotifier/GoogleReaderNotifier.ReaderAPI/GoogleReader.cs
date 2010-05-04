@@ -5,6 +5,7 @@ using System.IO;
 using System.Xml;
 using System.Collections.Generic;
 using GoogleReaderNotifier.ReaderAPI.Data;
+using System.Reflection;
 
 namespace GoogleReaderNotifier.ReaderAPI
 {
@@ -18,9 +19,16 @@ namespace GoogleReaderNotifier.ReaderAPI
 		private CookieCollection _Cookies = new CookieCollection();
 		private CookieContainer _cookiesContainer = new CookieContainer();
 		private bool _loggedIn = false;
-		
-		#endregion 
-		
+		private string[] _loginAuth;
+
+		#endregion
+
+		#region Public variables
+
+		public string LoginError = "";
+
+		#endregion
+
 		public bool LoggedIn
         {
             get { return _loggedIn; }
@@ -33,26 +41,47 @@ namespace GoogleReaderNotifier.ReaderAPI
 		public string Login(string username, string password)
 		{
 			_loggedIn = false;
+			LoginError = "";
             
-			HttpWebRequest req = CreateRequest("https://www.google.com/accounts/ServiceLoginAuth");
+			HttpWebRequest req = CreateRequest("https://www.google.com/accounts/ClientLogin");
 
-			string exc = PostLoginForm(req, String.Format("Email={0}&Passwd={1}&continue=http://www.google.com/", Uri.EscapeDataString(username), Uri.EscapeDataString(password)));
+			string exc = PostLoginForm(req, String.Format("accountType=GOOGLE&Email={0}&Passwd={1}&service=reader&source=GRaiN-Notifier-" + Assembly.GetExecutingAssembly().GetName().Version, Uri.EscapeDataString(username), Uri.EscapeDataString(password)));
 
 			if (exc.IndexOf("System.Net.WebException") != -1) return "CONNECT_ERROR";
-			
+
 			try
 			{
-				//_helper = GetResponseString(req);
-				_loggedIn = GetResponseString(req).IndexOf("error") == -1;
+				string _helper = GetResponseString(req);
+                _loggedIn = (_helper.IndexOf("error", StringComparison.OrdinalIgnoreCase) == -1) && (_helper.IndexOf("auth", StringComparison.OrdinalIgnoreCase) != -1);
+				if (_loggedIn == true)
+				{
+					_loginAuth = _helper.Split('\n');
+					foreach (string st in _loginAuth)
+					{
+						if (st != string.Empty)
+						{
+							string[] coo = st.Split('=');
+							_cookiesContainer.Add(new Cookie(coo[0], coo[1], "/", ".google.com"));
+						}
+					}
+
+				}
+				else
+				{
+					LoginError += _helper + "\r\n";
+				}
 			}
-			catch 
+			catch (Exception ex)
 			{
 				_loggedIn = false;
+				string _exc = ex.ToString();
+				LoginError += "Exception in GetResponseString. \r\n" + _exc + "\r\n";
 			}
 
 			if (!_loggedIn)
 				return "AUTH_ERROR";
 			else
+				LoginError = string.Empty;
 				return string.Empty;
         }
 
@@ -88,7 +117,7 @@ namespace GoogleReaderNotifier.ReaderAPI
 
             if (!LoggedIn)
             {
-                new Exception("Must be logged in to collect tags");
+                throw new Exception("Must be logged in to collect tags");
             }
 
             XmlDocument xdoc;
@@ -169,7 +198,7 @@ namespace GoogleReaderNotifier.ReaderAPI
         private XmlDocument GetAllUnreadCountsXMLDocument()
 		{
 			string url = "https://www.google.com/reader/api/0/unread-count?all=true";
-			string theXml = GetResponseString(CreateRequest(url));
+            string theXml = GetResponseString(CreateRequest(url))/*.Replace("&nbsp;", "&#160;")*/;
 
 			XmlDocument xdoc = new XmlDocument();
 			xdoc.LoadXml(theXml);
@@ -180,7 +209,7 @@ namespace GoogleReaderNotifier.ReaderAPI
 		private XmlDocument GetTagListXMLDocument()
 		{
 			string url = "https://www.google.com/reader/api/0/tag/list";
-			string theXml = GetResponseString(CreateRequest(url));
+            string theXml = GetResponseString(CreateRequest(url))/*.Replace("&nbsp;", "&#160;")*/;
 
 			XmlDocument xdoc = new XmlDocument();
 			xdoc.LoadXml(theXml);
@@ -216,9 +245,20 @@ namespace GoogleReaderNotifier.ReaderAPI
 				//_currentHTML = responseString;
 				
 			}
+			catch (WebException ex)
+			{
+				using (StreamReader read = new StreamReader(ex.Response.GetResponseStream()))
+				{
+					responseString = read.ReadToEnd();
+				}
+				//res.Close();
+				string exc = ex.ToString();
+				LoginError += responseString+"\r\n" +exc + "\r\n";
+			}
 			catch (Exception ex)
 			{
 				string exc = ex.ToString();
+				LoginError += exc + "\r\n";
 			}
 			return responseString;
 		}
@@ -254,6 +294,7 @@ namespace GoogleReaderNotifier.ReaderAPI
 			
 			req.Proxy = defaultProxy; // if we wanted to disable proxying, can be done by setting to null I think
 			//req.UserAgent = _user.UserAgent;
+			req.UserAgent = "GRaiN/" + Assembly.GetExecutingAssembly().GetName().Version + "(Google Reader Notifier for Windows)";
 			req.CookieContainer = _cookiesContainer;
 			//req.Referer = _currentURL; // set the referring url properly to appear as a regular browser
 			//_currentURL = url; // set the current url so the next request will have the right referring url ( might not work for sub pages )
