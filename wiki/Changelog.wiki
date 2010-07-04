@@ -2,6 +2,12 @@
 #labels Featured
 
 --------
+*1.1.7* - June 24 2010
+--------
+
+-Fix: Authorization using headers instead of cookies. Fixes exception when opening preferences, or just not getting unread count.
+
+--------
 *1.1.6* - May 3 2010
 --------
 
