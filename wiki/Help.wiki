@@ -15,14 +15,14 @@ Google Reader Notifier is a Windows based system tray application that checks Go
 <wiki:toc max_depth="4" />
 <font size=3>
 =Reader Notifier Preferences Screen=
-http://yoni-zaf.appspot.com/images/preferences1.1.3.png
+http://reader-notifier-mod.googlecode.com/svn/website/static/images/preferences1.1.6.png
 
 ==Check for new items==
 
     This menu option lets you select how often the notifier will check for new updates. If you have a smaller number of subscriptions, it may be useful to check more often. For a very large number of subscriptions, you will be notified constantly on new updates. It may be helpful to use the label filter in this case.
 
     You can manually trigger checking for new items by right-clicking on the icon and choosing Check Now:<br>
-    http://yoni-zaf.appspot.com/images/menu-checknow.png
+    http://reader-notifier-mod.googlecode.com/svn/website/static/images/menu-checknow.png
 
 ==Only display items with label==
 
@@ -30,19 +30,19 @@ http://yoni-zaf.appspot.com/images/preferences1.1.3.png
 
     version *1.1.1 and later*: the textbox was replaced by an automatically generated list of lables. just choose the labels you want from the list, and it will only show items with that label. <br>
     A right click on the listbox will open a context menu to let you choose all labels - or none.<br>
-    http://yoni-zaf.appspot.com/images/labels.png<br>
+    http://reader-notifier-mod.googlecode.com/svn/website/static/images/labels.png<br>
     if you changed login information, click OK to close the Preferences window, then open it again to choose labels.<br>
     (*since 1.1.3:* click on Refresh button to get list of labels after changing login info . There's no need to close and reopen the Preferences window)
 
 ==Show count in Tooltip==
 
     When you hold your mouse over the tray icon, the unread count is normally displayed. If you wanted to turn this off, you can uncheck the checkbox. This is turned on by default.<br>
-    http://yoni-zaf.appspot.com/images/tooltip.png
+    http://reader-notifier-mod.googlecode.com/svn/website/static/images/tooltip.png
 
 ==Animate popup==
 
     When notifier detects new unread items, a popup animation similar to the Google Talk new mail notification is shown. You can uncheck this box if you want to disable that popup.<br>
-    http://yoni-zaf.appspot.com/images/popup.png
+    http://reader-notifier-mod.googlecode.com/svn/website/static/images/popup.png
 
 ==Start notifier when windows starts==
 
@@ -52,7 +52,7 @@ http://yoni-zaf.appspot.com/images/preferences1.1.3.png
 
     If you want to open google reader in a different browser than your system default one, choose one here. The list includes every browser installed on your system. 
         your choice will affect opening reader when you:<br>1. choose "Go To Reader" from right click menu.<br>2. double-click the systray icon<br>3. click on the text in notification popup window<br>
-        http://yoni-zaf.appspot.com/images/browser.png
+        http://reader-notifier-mod.googlecode.com/svn/website/static/images/browser.png
 
 ==Notification Audio File==
 
@@ -63,12 +63,12 @@ http://yoni-zaf.appspot.com/images/preferences1.1.3.png
     You should enter your Google Reader account login information here. The password will be saved in an encrypted file.
 
     If you forgot to fill a field, the login failed, or you're not connected to the Internet, an error icon will show up. Hover over it to see the error details in a tooltip.<br>
-    http://yoni-zaf.appspot.com/images/error.png
+    http://reader-notifier-mod.googlecode.com/svn/website/static/images/error.png
 
 ==Check for New Version==
     Since version 1.1.3 Google Reader Notifier can Check if there's new version available. Click on the 'Check for New Version' link in Preferences window, and if there's new version, the link will become green and say 'New Version Available'.
     Hovering over the green icon will give you version details. Click on the link to go to the Download page.<br>
-    http://yoni-zaf.appspot.com/images/updates.png<br>
+    http://reader-notifier-mod.googlecode.com/svn/website/static/images/updates.png<br>
     When no new version available, the link becomes gray and says 'No Update available'.
 
     When opening Preferences window, It will check automatically once, if you didn't check for at least 7 days. 
@@ -77,7 +77,7 @@ http://yoni-zaf.appspot.com/images/preferences1.1.3.png
 = Snarl Support =
 
 Since version 1.1.1 Google Reader Notifier supports [http://www.fullphat.net/index.php Snarl] (a notification system for Windows.) You don't have to do anything. Run Snarl, run Notifier, it will be recognized automatically, and notifications will show up in snarl instead.<br>
-    http://yoni-zaf.appspot.com/images/snarlnotify.jpg
+    http://reader-notifier-mod.googlecode.com/svn/website/static/images/snarlnotify.jpg
     
 <br><br>
 *Disclaimer: Google Reader Notifier is not in any way affiliated with Google Corp.*
