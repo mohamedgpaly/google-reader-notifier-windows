@@ -1,7 +1,6 @@
 #summary Help with Google Reader Notifier
 #labels Featured
-Updated for 1.0.8 release<br>
-Updated for 1.1.3
+Updated for 1.1.7
 
 <font size=4>
 *Google Reader Notifier Help*
@@ -53,6 +52,10 @@ http://reader-notifier-mod.googlecode.com/svn/website/static/images/preferences1
     If you want to open google reader in a different browser than your system default one, choose one here. The list includes every browser installed on your system. 
         your choice will affect opening reader when you:<br>1. choose "Go To Reader" from right click menu.<br>2. double-click the systray icon<br>3. click on the text in notification popup window<br>
         http://reader-notifier-mod.googlecode.com/svn/website/static/images/browser.png
+
+==Unread Items Icon==
+
+    Since version 1.1.5: Lets you choose the icon used for unread notification in the systray, since the default icon may not stand out enough.
 
 ==Notification Audio File==
 
