@@ -1,0 +1,12 @@
+#summary Do you want to provide feedback?
+
+== Ways to provide feedback ==
+
+<font size=3>
+You may want to provide feedback or start a discussion about GRaiN, but where?
+
+some think the Issue Tracker is not proper for anything other than bug reports. that's not the case. the Issue Tracker is the best option for any sort of feedback. It just needs to be labeled correctly.
+
+The best way would be to use the [http://code.google.com/p/google-reader-notifier-windows/issues/entry?template=General%20Feedback Issue template for discussion and feedback]. Alternatively, you could post any kind of comment under this wiki page. However, please don't post general feedback comments under the [Help] or [Changelog] wiki pages, only comments directly related to these pages.
+
+</font>
