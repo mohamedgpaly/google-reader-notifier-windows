@@ -1,0 +1,37 @@
+#summary Notifier alternatives to GRaiN
+#labels Featured
+
+<font size=3>
+Here’s a short overview of other feed notifiers than either work with Google Reader, or independent.
+
+I did not try every one of these applications, this is just a list of all notifiers I found. If anyone has comments, additions, complains etc. you can post a comment below. I will edit this page if necessary.
+
+*Table Of Contents*
+<wiki:toc max_depth="3" />
+
+==Reader Notifier for Mac and Reader Notifier Reloaded (Mac)===
+  [http://code.google.com/p/readernotifier/ Reader Notifier] was a simple app for mac to get notifications from Google Reader. Problem is, it doesn’t work anymore. the developer stopped working on  it, and since Google changed the login API, the app stopped working. But, as things are with open source software, some other people created forks to fix that problem (and other problems). One such fork is  [http://github.com/godenzim/readernotifier/downloads Reader Notifier Reloaded]. <br> _*[http://lifehacker.com/software/google-reader/download-of-the-day-google-reader-notifier-mac-213663.php Review (old)]*_
+
+==Desktop Google Reader (Windows)==
+
+  [http://desktopgooglereader.codeplex.com/ Desktop Google Reader] is more of a full desktop client for Google Reader than a notifier. It lets you read your new items without opening the browser. There is also support for notifications through [http://www.fullphat.net/ Snarl].<br>_*[http://www.makeuseof.com/tag/desktop-google-reader-awesome-rss-reader-syncs-google/ Review]*_
+
+==Feed Notifier (Windows)==
+
+  [http://www.feednotifier.com/ Feed Notifier] is an independent notifier, not a client of Google Reader or any similar service.<br>_*[http://www.freewaregenius.com/2010/03/11/feednotifier-get-real-time-rss-feed-notifications-in-your-system-tray/ Review]*_
+
+==Google Reader Watcher (Firefox)==
+
+  [https://addons.mozilla.org/en-US/firefox/addon/4808 Google Reader Watcher] is a Firefox extension, sits in Firefox’s status bar and notifies of new Google Reader items.<br>_*[http://lifehacker.com/5315459/google-reader-watcher-adds-rss-notifications-to-firefox Review]*_
+
+==Google Reader Notifier (by Google) (Chrome)==
+
+  A [https://chrome.google.com/extensions/detail/apflmjolhbonpkbkooiamcnenbmbjcbf Google Chrome extension] for Google Reader notifications. There are probably more reader notifiers for Chrome, but this one is made by Google themselves.<br>_*[http://www.addictivetips.com/internet-tips/check-google-reader-feeds-with-google-reader-notifier-in-chrome-extension/ Review]*_
+
+==GWatchman (Windows)==
+
+  [http://code.google.com/p/gwatchman/ GWatchman] is a portable notifier app for both Google Reader and Gmail. It sits in the system tray (like most of them), and can optionally use [http://www.growlforwindows.com/ Growl for windows] for notifications.<br>_*[http://www.addictivetips.com/windows-tips/gwatchman-gmail-google-reader-notification-alerts-on-desktop-with-growl-support/ Review]*_
+
+==Google Reader Notifier Qt (Cross-platform)==
+
+  [http://code.google.com/p/google-reader-notifier-qt/ Google Reader Notifier using Qt] is a cross-platform system tray notifier for Google Reader, based on the Qt and works on Windows and Linux and probably anywhere Qt runs. Sadly, it didn’t work for me when I tried (version 1.0.91).<br>_*[http://www.addictivetips.com/windows-tips/desktop-google-reader-notifier/ Review]*_
